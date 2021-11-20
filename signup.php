@@ -1,4 +1,30 @@
+<?php
+    include("classes/connect.php");
+    include("classes/signup.class.php");
 
+    $fullname = "";
+    $email = "";
+    $password = "";
+    $gender = "";
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        $signup = new Signup();
+        $result = $signup->evaluate($_POST);
+
+        if($result != "")
+        {
+            echo "<div style='text-align:center;'>";
+            echo "The following errors occured <br>";
+            echo $result;
+            echo "</div>";
+        }
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $password = $_POST['password1'];
+        $gender = $_POST['gender'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -48,51 +74,54 @@
 <body style="background-color:FloralWhite" >
 	
 	<div class="container px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-        <div class="card card0 border-0" style="background-color: skyblue" >
+        <div class="card card0 border-0" style="background-color: hsl(252, 100%, 90%)" >
             <div class="row d-flex"  >
                 <div class="col-lg-6"  >
                     
                     <div class="card2 card border-0 px-4 py-5"  >
                         <div class="row mb-4 px-3">
-                            <h1 class="mb-0 mr-4 mt-2 text-center" >Create an account...</h6>
+                            <h1 class="mb-0 mr-4 mt-2 text-center" >Create an account</h6>
                      
-                        <form>
+                        <form method="post" action="signup.php">
                            
                               <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-label mt-4">Full name</label>
+                                <input value='<?php echo $fullname; ?>' name="fullname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your full name">
+       
                                 <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input value='<?php echo $email; ?>' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
        
                               
                                 <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input name="password1" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+
+                                <label for="exampleInputPassword2" class="form-label mt-4">Confirm Password</label>
+                                <input name="password2" type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm your Password">
                               
-                             
-                                <label for="exampleInputName" class="form-label mt-4">Full Name</label>
-                                <input type="name" class="form-control" id="exampleInputName" placeholder="Full Name">
-                        
                                 <label class="form-label mt-4"> Gender</label>
                             </div>
+                            
                             <div class="form-check">
                                 <label class="form-check-label">
-                                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                Female
+                                    <input name="gender" value="1" <?php echo $gender == 1? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios1">
+                                    Female
                                 </label>  <br>
   
                                 <label class="form-check-label">
-                                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                                 Male
+                                    <input name="gender" value="2" <?php echo $gender == 2? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios2">
+                                    Male
                                 </label>  <br>
      
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                                 Other
-                                   </label>  <br>
+                                    <input name="gender" value="3" <?php echo $gender == 3? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios3">
+                                    Other
+                                </label>  <br>
                             </div>
-                        </form>
+                        
                 <div class="col-lg-6" >
                     <div class="right text-center"  >
                         <h4 class="mb-0 mr-4 mt-2 text-center" >General Mental Health Questions</h4>
-                        <form>
+                        
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label mt-4">Have you had any problems with your work or daily life due to any emotional problems, such as feeling depressed, sad or anxious?  </label> 
                                 <select class="form-select" id="exampleSelect1">
@@ -128,7 +157,7 @@
                                   </select>
                             </div>
 
-                        </form> <br>
+                        <br>
                         <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary">Register</button> </div>
                                
                         <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a class="text-danger ">Sign In</a></small> </div>
@@ -137,12 +166,7 @@
                     </div>     
                         
                 </div>
-                        
-                    
-                
-            
-       
-                   
+</form>
                 </div>
                 
             </div>
