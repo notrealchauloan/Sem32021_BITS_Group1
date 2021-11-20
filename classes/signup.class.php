@@ -13,6 +13,22 @@ class Signup
                 $this->error = $this->error . $key . " is empty! <br>";
 
             }
+
+            if($key == "fullname")
+            {
+                if(is_numeric($value))
+                {
+                    $this->error .= "Your name cannot be numbers <br>";
+                }
+            }
+
+            if($key == "email")
+            {
+                if(!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $value))
+                {
+                    $this->error .= "Please enter a valid email address";
+                }
+            }
         }
 
         if($this->error == "")
