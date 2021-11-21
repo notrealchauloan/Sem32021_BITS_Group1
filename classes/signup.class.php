@@ -57,8 +57,6 @@ class Signup
 
         $query = "INSERT INTO users(userid,firstname,lastname,email,password,gender,url_address) VALUES('$userid','$firstname','$lastname','$email','$password','$gender','$url_address')";
         
-        echo $query;
-        
         $DB = new Database();
         $DB->save($query);
     }

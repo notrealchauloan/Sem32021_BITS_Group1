@@ -23,7 +23,7 @@
             }
             else
             {
-                header("Location: index.html");
+                header("Location: login.php");
                 die;
             }
         
@@ -37,7 +37,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>User Login</title>
+	<title>Create An Account</title>
 	<!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/united/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
@@ -58,18 +58,17 @@
                      
                         <form method="post" action="signup.php">
                            
-                              <div class="form-group">
-                                  <div class="row">
-                                      <div class="col-6">
-                                            <label for="firstname" class="form-label mt-4">First name</label>
-                                            <input value='<?php echo $firstname; ?>' name="firstname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your first name">
-                                      </div>
-                                      <div class="col-6">
-                                            <label for="lastname" class="form-label mt-4">Last name</label>
-                                            <input value='<?php echo $lastname; ?>' name="lastname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your last name">
-                                      </div>
-                                  </div>
-                                
+                              <div class="row form-group">
+                                  
+                                <div class="col-6">
+                                    <label for="firstname" class="form-label mt-4">First name</label>
+                                    <input value='<?php echo $firstname; ?>' name="firstname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your first name">
+                                </div>
+                                <div class="col-6">
+                                    <label for="lastname" class="form-label mt-4">Last name</label>
+                                    <input value='<?php echo $lastname; ?>' name="lastname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your last name">
+                                </div>
+                                  
                                 <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
                                 <input value='<?php echo $email; ?>' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
        
