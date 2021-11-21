@@ -1,6 +1,18 @@
 <?php
-    session_start();
-    print_r($_SESSION);
+session_start();
+//return to login if not logged in
+if (!isset($_SESSION['user']) ||(trim ($_SESSION['user']) == '')){
+	header('location:login.php');
+}
+ 
+include_once('classes/login.class.php');
+ 
+$user = new User();
+ 
+//fetch user data
+$sql = "SELECT * FROM users WHERE id = '".$_SESSION['user']."'";
+$row = $user->details($sql);
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">

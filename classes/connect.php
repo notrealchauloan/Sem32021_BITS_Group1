@@ -6,15 +6,27 @@
         private $password = "";
         private $db = "socialbook";
 
-        function connect()
+        protected $connection;
+
+        public function __construct()
         {
-            $connection = mysqli_connect($this->host, $this->username, $this->password, $this->db);
-            return $connection;
+            if (!isset($this->connection)) {
+ 
+                $this->connection = new mysqli($this->host, $this->username, $this->password, $this->db);
+     
+                if (!$this->connection) {
+                    echo 'Cannot connect to database server';
+                    exit;
+                }            
+            }    
+            return $this->connection;
+            // $connection = mysqli_connect($this->host, $this->username, $this->password, $this->db);
+            // return $connection;
         }
 
         function read($query)
         {
-            $conn = $this->connect();
+            $conn = $this->__construct();
             $result = mysqli_query($conn, $query);
 
             if(!$result)
@@ -35,7 +47,7 @@
 
         function save($query)
         {
-            $conn = $this->connect();
+            $conn = $this->__construct();
             $result = mysqli_query($conn, $query);
 
             if(!$result)
