@@ -10,15 +10,16 @@ class Signup
         {
             if(empty($value))
             {
-                $this->error = $this->error . $key . " is empty! <br>";
-
+                if(!isset($_POST['gender'])){
+                    $this->error = $this->error . $key . " is empty! <br>";
+                }
             }
 
-            if($key == "fullname")
+            if($key == "firstname" || $key == "lastname")
             {
-                if(is_numeric($value))
+                if(is_numeric($value) || strstr($value, " "))
                 {
-                    $this->error .= "Your name cannot be numbers <br>";
+                    $this->error .= "Your name cannot be numbers or contains empty space <br>";
                 }
             }
 
@@ -26,7 +27,7 @@ class Signup
             {
                 if(!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $value))
                 {
-                    $this->error .= "Please enter a valid email address";
+                    $this->error .= "Invalid email address <br>";
                 }
             }
         }
@@ -44,16 +45,17 @@ class Signup
 
     public function create_user($data)
     {
-        $fullname = $data['fullname'];
+        $firstname = ucfirst($data['firstname']);
+        $lastname = ucfirst($data['lastname']);
         $email = $data['email'];
-        $password = $data['password1'];
+        $password = $data['password2'];
         $gender = $data['gender'];
 
         // create by PHP
-        $userid = strtolower($fullname) . "." . $this->create_userid();
-        $url_address = $this->create_userid();
+        $userid = $this->create_userid();
+        $url_address = strtolower($firstname) . "." . strtolower($lastname) . "." . $userid;
 
-        $query = "INSERT INTO users(userid,fullname,email,password,gender,url_address) VALUES('$userid','$fullname','$email','$password','$gender','$url_address')";
+        $query = "INSERT INTO users(userid,firstname,lastname,email,password,gender,url_address) VALUES('$userid','$firstname','$lastname','$email','$password','$gender','$url_address')";
         
         echo $query;
         

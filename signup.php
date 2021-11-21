@@ -2,7 +2,9 @@
     include("classes/connect.php");
     include("classes/signup.class.php");
 
-    $fullname = "";
+    // define variables and set to empty values
+    $firstname = "";
+    $lastname = "";
     $email = "";
     $password = "";
     $gender = "";
@@ -11,57 +13,28 @@
     {
         $signup = new Signup();
         $result = $signup->evaluate($_POST);
-
+        
         if($result != "")
         {
             echo "<div style='text-align:center;'>";
             echo "The following errors occured <br>";
             echo $result;
             echo "</div>";
-        }
-        $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $password = $_POST['password1'];
-        $gender = $_POST['gender'];
-    }
-?>
+            }
+            else
+            {
+                header("Location: index.html");
+                die;
+            }
+        
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $password = $_POST['password1'];
+            }
+        ?>
 <!DOCTYPE html>
 <html lang="en">
-<style>
-
-.form{
-	background-color: rgb(158, 32, 32);
-        width: 400px;
-        height: 400px;
-        margin: 3em auto;
-        border-radius: 1.5em;
-        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14)
-}
-.card1{
-    position: relative;
-    top: 250px;
-    left: 135px;
-    width: 340px;
-
-
-}
-.card{
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14)
-}
-.welcome{
-    color: white;
-    position: relative;
-    top: 230px;
-}
-.right{
-    position: absolute;
-    margin-left: 610px;
-    top:38px;
-    width: 550px;
-}
-
-
-</style>
 <head>
 	<meta charset="UTF-8">
 	<title>User Login</title>
@@ -69,6 +42,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/united/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="userstylesheet.css">
 </head>
 
 <body style="background-color:FloralWhite" >
@@ -85,13 +59,20 @@
                         <form method="post" action="signup.php">
                            
                               <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label mt-4">Full name</label>
-                                <input value='<?php echo $fullname; ?>' name="fullname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your full name">
-       
+                                  <div class="row">
+                                      <div class="col-6">
+                                            <label for="firstname" class="form-label mt-4">First name</label>
+                                            <input value='<?php echo $firstname; ?>' name="firstname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your first name">
+                                      </div>
+                                      <div class="col-6">
+                                            <label for="lastname" class="form-label mt-4">Last name</label>
+                                            <input value='<?php echo $lastname; ?>' name="lastname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your last name">
+                                      </div>
+                                  </div>
+                                
                                 <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
                                 <input value='<?php echo $email; ?>' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
        
-                              
                                 <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
                                 <input name="password1" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 
@@ -103,17 +84,17 @@
                             
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input name="gender" value="1" <?php echo $gender == 1? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios1">
-                                    Female
-                                </label>  <br>
+                                    <input name="gender" value="F" <?php echo $gender == 1? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios1">
+                                    Female 
+                                </label> <br>
   
                                 <label class="form-check-label">
-                                    <input name="gender" value="2" <?php echo $gender == 2? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios2">
+                                    <input name="gender" value="M" <?php echo $gender == 2? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios2">
                                     Male
-                                </label>  <br>
+                                </label> <br> 
      
                                 <label class="form-check-label">
-                                    <input name="gender" value="3" <?php echo $gender == 3? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios3">
+                                    <input name="gender" value="O" <?php echo $gender == 3? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios3">
                                     Other
                                 </label>  <br>
                             </div>
