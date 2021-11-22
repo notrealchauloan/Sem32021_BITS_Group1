@@ -3,16 +3,18 @@
     include("classes/signup.class.php");
 
     // define variables and set to empty values
-    $firstname = "";
-    $lastname = "";
-    $email = "";
-    $password = "";
-    $gender = "";
+    $firstname = $lastname = $email =  $password = $gender = "";
 
+    // If the registration form is submitted,
+    //   create a class and store the result of its function in $result 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $signup = new Signup();
-        $result = $signup->evaluate($_POST);
+        // create signup class
+        $signup = new Signup(); 
+
+        // Call function evaluate with data $_POST
+        $result = $signup->evaluate($_POST); 
+        
         
         if($result != "")
         {
@@ -31,7 +33,7 @@
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $password = $_POST['password1'];
-            }
+    }
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,37 +105,19 @@
                         <h4 class="mb-0 mr-4 mt-2 text-center" >General Mental Health Questions</h4>
                         
                             <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label mt-4">Have you had any problems with your work or daily life due to any emotional problems, such as feeling depressed, sad or anxious?  </label> 
+                                <label for="exampleInputEmail1" class="form-label mt-4">How often have you been bothered by feeling down, depressed or hopeless?</label> 
                                 <select class="form-select" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option>Not at all</option>
+                                    <option>Several days</option>
+                                    <option>More than half the days</option>
+                                    <option>Nearly every day</option>
                                   </select>
-                                  <label for="exampleInputEmail1" class="form-label mt-4">How often has your mental health affected your relationships? </label> 
+                                  <label for="exampleInputEmail1" class="form-label mt-4">How often have you had little interest or pleasure in doing things </label> 
                                 <select class="form-select" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                  </select>
-                                  <label for="exampleInputEmail1" class="form-label mt-4">Overall how would you rate your mental health?</label> 
-                                <select class="form-select" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                  </select>
-                                  <label for="exampleInputEmail1" class="form-label mt-4">Would you be willing to have a friend with mental illness? </label> 
-                                <select class="form-select" id="exampleSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <option>Not at all</option>
+                                    <option>Several days</option>
+                                    <option>More than half the days</option>
+                                    <option>Nearly every day</option>
                                   </select>
                             </div>
 

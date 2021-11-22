@@ -15,7 +15,7 @@ class User extends Database{
  
         if($query->num_rows > 0){
             $row = $query->fetch_array();
-            return $row['id'];
+            return $row['userid'];
         }
         else{
             return false;

@@ -1,10 +1,10 @@
 <?php
-	//start session
+	// start session
 	session_start();
- 
-	//redirect if logged in
+
+	// redirect to homepage if logged in (if user has already logged in and enter the login page)
 	if(isset($_SESSION['userid'])){
-		header('location:index.php'); 
+		header('location:index.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -36,7 +36,9 @@
 
 							<label class="form-label mt-3">Password</label>
 							<input name="password" type="password" class="form-control" placeholder="Password" required>
-                    	</div>
+							
+						
+						</div>
 						<div class="row mb-3 mt-4 px-3">
 							<button type="submit" name="login" class="btn btn-lg btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>		            	
 						</div>
@@ -45,13 +47,13 @@
 		    	
 		    </div>
 		    <?php
+				// if there is a message set
 		    	if(isset($_SESSION['message'])){
 		    		?>
 		    			<div class="alert alert-info text-center">
 					        <?php echo $_SESSION['message']; ?>
 					    </div>
 		    		<?php
- 
 		    		unset($_SESSION['message']);
 		    	}
 		    ?>
