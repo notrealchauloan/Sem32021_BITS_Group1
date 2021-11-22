@@ -33,6 +33,9 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
                 <div class="profile-photo">
                     <img src="./images/profile-1.jpg">
                 </div>
+                <label class="btn btn-primary" for="sign-out">
+                    <a style="color:#fff;" href="logout.php">Sign Out</a>    
+                </label>
             </div>
         </div>
     </nav>
