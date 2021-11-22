@@ -124,7 +124,7 @@
                         <br>
                         <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary">Register</button> </div>
                                
-                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a class="text-danger ">Sign In</a></small> </div>
+                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a href="login.php" class="text-danger text-decoration-none">Sign In</a></small> </div>
                            
                     </div>
                     </div>     

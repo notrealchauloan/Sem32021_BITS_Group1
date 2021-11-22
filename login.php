@@ -17,15 +17,15 @@
 </head>
 <body>
 <div class="container d-flex align-items-center justify-content-center" style="min-height:90vh;">
-<div class="card" style="background-color: skyblue;" >
-        <div class="row d-flex align-items-center">
+<div class="card" style="background-color: tomato;" >
+        <div class="row d-flex align-items-center p-3">
             <div class="col-lg-6">
                 <h2 class="text-center" style="color:#fff;"> Welcome back to your Social Book </h2>
 				</div>
             <div class="col-lg-6" >
                 <div class="card px-4"  >
 				<br>
-                    <h3 style="color: hsl(252, 92%, 67%); text-align:center;">Sign in with your SocialBook Account</h3>
+                    <h3 style="color: tomato; text-align:center;">Sign in with your SocialBook Account</h3>
 
 		    	
 		        	<form method="POST" action="login_validation.php">
@@ -40,8 +40,9 @@
 						
 						</div>
 						<div class="row mb-3 mt-4 px-3">
-							<button type="submit" name="login" class="btn btn-lg btn-primary btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>		            	
+							<button type="submit" name="login" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>		            	
 						</div>
+						<div class="row mb-4 px-3 text-center"> <small class="font-weight-bold">Don't have an account? <a class="text-decoration-none" href="signup.php">Register Now!</a></small> </div>
 						</fieldset>
 		        	</form>
 		    	
