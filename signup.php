@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="userstylesheet.css">
 </head>
 
-<body style="background-color:FloralWhite" >
+<body background="./images/welcome.png">
 	
 	<div class="container px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
         <div class="card card0 border-0" style="background-color: hsl(252, 100%, 90%)" >
