@@ -23,6 +23,14 @@ class Signup
                     $this->error .= "Invalid email address <br>";
                 }
             }
+
+            if($key == "password")
+            {
+                if($key !== $data['password_confirm'])
+                {
+                    $this->error .= 'Your confirm password must match your password <br>';
+                }
+            }
         }
 
         if($this->error == "")

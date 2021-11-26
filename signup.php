@@ -1,9 +1,10 @@
 <?php
+    session_start();
     include("classes/connect.php");
     include("classes/signup.class.php");
 
     // define variables and set to empty values
-    $firstname = $lastname = $email =  $password = $gender = $sel1 = $sel2 = $sel3 = $sel4 = "";
+    $firstname = $lastname = $email =  $password = $password_confirm = $gender = $sel1 = $sel2 = $sel3 = $sel4 = "";
 
     // If the registration form is submitted,
     //   create a class and store the result of its function in $result 
@@ -14,7 +15,6 @@
 
         // Call function evaluate with data $_POST
         $result = $signup->evaluate($_POST); 
-        
         
         if($result != "")
         {
@@ -32,7 +32,8 @@
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
-            $password = $_POST['password1'];
+            $password = $_POST['password'];
+            $password_confirm = $_POST['password_confirm'];
             $sel1 = $_POST['sel1'];
             $sel2 = $_POST['sel2'];
             $sel3 = $_POST['sel3'];
@@ -79,10 +80,10 @@
                                 <input value='<?php echo $email; ?>' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
        
                                 <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-                                <input name="password1" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
 
                                 <label for="exampleInputPassword2" class="form-label mt-4">Confirm Password</label>
-                                <input name="password2" type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm your Password" required>
+                                <input name="password_confirm" type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm your Password" required>
                               
                                 <label class="form-label mt-4"> Gender</label>
                             </div>
@@ -149,7 +150,7 @@
                     </div>     
                         
                 </div>
-</form>
+                </form>
                 </div>
                 
             </div>
