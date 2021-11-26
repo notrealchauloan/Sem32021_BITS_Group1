@@ -8,13 +8,6 @@ class Signup
     {
         foreach ($data as $key => $value)
         {
-            if(empty($value))
-            {
-                if(!isset($_POST['gender'])){
-                    $this->error = $this->error . $key . " is empty! <br>";
-                }
-            }
-
             if($key == "firstname" || $key == "lastname")
             {
                 if(is_numeric($value) || strstr($value, " "))
@@ -50,12 +43,17 @@ class Signup
         $email = $data['email'];
         $password = $data['password2'];
         $gender = $data['gender'];
+        $sel1 = $data['sel1'];
+        $sel2 = $data['sel2'];
+        $sel3 = $data['sel3'];
+        $sel4 = $data['sel4'];
+
 
         // create by PHP
         $userid = $this->create_userid();
         $url_address = strtolower($firstname) . "." . strtolower($lastname) . "." . $userid;
 
-        $query = "INSERT INTO users(userid,firstname,lastname,email,password,gender,url_address) VALUES('$userid','$firstname','$lastname','$email','$password','$gender','$url_address')";
+        $query = "INSERT INTO users(userid,firstname,lastname,email,password,gender,url_address,feeldown,lackinterest,focus,energy) VALUES('$userid','$firstname','$lastname','$email','$password','$gender','$url_address','$sel1','$sel2','$sel3','$sel4')";
         
         $DB = new Database();
         $DB->save($query);

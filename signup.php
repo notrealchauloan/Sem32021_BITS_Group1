@@ -3,7 +3,7 @@
     include("classes/signup.class.php");
 
     // define variables and set to empty values
-    $firstname = $lastname = $email =  $password = $gender = "";
+    $firstname = $lastname = $email =  $password = $gender = $sel1 = $sel2 = $sel3 = $sel4 = "";
 
     // If the registration form is submitted,
     //   create a class and store the result of its function in $result 
@@ -33,6 +33,10 @@
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
             $password = $_POST['password1'];
+            $sel1 = $_POST['sel1'];
+            $sel2 = $_POST['sel2'];
+            $sel3 = $_POST['sel3'];
+            $sel4 = $_POST['sel4'];
     }
         ?>
 <!DOCTYPE html>
@@ -64,26 +68,26 @@
                                   
                                 <div class="col-6">
                                     <label for="firstname" class="form-label mt-4">First name</label>
-                                    <input value='<?php echo $firstname; ?>' name="firstname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your first name">
+                                    <input value='<?php echo $firstname; ?>' name="firstname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your first name" required>
                                 </div>
                                 <div class="col-6">
                                     <label for="lastname" class="form-label mt-4">Last name</label>
-                                    <input value='<?php echo $lastname; ?>' name="lastname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your last name">
+                                    <input value='<?php echo $lastname; ?>' name="lastname" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your last name" required>
                                 </div>
                                   
                                 <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-                                <input value='<?php echo $email; ?>' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input value='<?php echo $email; ?>' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
        
                                 <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-                                <input name="password1" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input name="password1" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
 
                                 <label for="exampleInputPassword2" class="form-label mt-4">Confirm Password</label>
-                                <input name="password2" type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm your Password">
+                                <input name="password2" type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm your Password" required>
                               
                                 <label class="form-label mt-4"> Gender</label>
                             </div>
                             
-                            <div class="form-check">
+                            <div class="form-check required">
                                 <label class="form-check-label">
                                     <input name="gender" value="F" <?php echo $gender == 1? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios1">
                                     Female 
@@ -95,36 +99,51 @@
                                 </label> <br> 
      
                                 <label class="form-check-label">
-                                    <input name="gender" value="O" <?php echo $gender == 3? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios3">
+                                    <input name="gender" value="O" <?php echo $gender == 3? "checked" : ""; ?> type="radio" class="form-check-input" id="optionsRadios3" checked>
                                     Other
                                 </label>  <br>
                             </div>
                         
                 <div class="col-lg-6" >
-                    <div class="right text-center"  >
+                    <div class="right "  >
                         <h4 class="mb-0 mr-4 mt-2 text-center" >General Mental Health Questions</h4>
                         
                             <div class="form-group">
                                 <label for="exampleInputEmail1" class="form-label mt-4">How often have you been bothered by feeling down, depressed or hopeless?</label> 
-                                <select class="form-select" id="exampleSelect1">
-                                    <option>Not at all</option>
-                                    <option>Several days</option>
-                                    <option>More than half the days</option>
-                                    <option>Nearly every day</option>
+                                <select name="sel1" class="form-select" id="exampleSelect1">
+                                    <option value="0">Not at all</option>
+                                    <option value="1">Several days</option>
+                                    <option value="2">More than half the days</option>
+                                    <option value="3">Nearly every day</option>
                                   </select>
                                   <label for="exampleInputEmail1" class="form-label mt-4">How often have you had little interest or pleasure in doing things </label> 
-                                <select class="form-select" id="exampleSelect1">
-                                    <option>Not at all</option>
-                                    <option>Several days</option>
-                                    <option>More than half the days</option>
-                                    <option>Nearly every day</option>
+                                <select name="sel2" class="form-select" id="exampleSelect1">
+                                    <option value="0">Not at all</option>
+                                    <option value="1">Several days</option>
+                                    <option value="2">More than half the days</option>
+                                    <option value="3">Nearly every day</option>
                                   </select>
+                                  <label for="exampleInputEmail1" class="form-label mt-4">How often have you had trouble concentrating on things? </label>
+                                <select name="sel3" class="form-select" id="exampleSelect1">
+                                    <option value="0">Not at all</option>
+                                    <option value="1">Several days</option>
+                                    <option value="2">More than half the days</option>
+                                    <option value="3">Nearly every day</option>
+                                </select>
+
+                                <label for="exampleInputEmail1" class="form-label mt-4">How often do you feel tired or having little energy? </label>
+                                <select name="sel4" class="form-select" id="exampleSelect1">
+                                    <option value="0">Not at all</option>
+                                    <option value="1">Several days</option>
+                                    <option value="2">More than half the days</option>
+                                    <option value="3">Nearly every day</option>
+                                </select>
                             </div>
 
                         <br>
                         <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary">Register</button> </div>
                                
-                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Already have an account? <a href="login.php" class="text-danger text-decoration-none">Sign In</a></small> </div>
+                        <div class="row mb-4 px-3 text-center"> <small class="font-weight-bold">Already have an account? <a href="login.php" class="text-danger text-decoration-none">Sign In</a></small> </div>
                            
                     </div>
                     </div>     
