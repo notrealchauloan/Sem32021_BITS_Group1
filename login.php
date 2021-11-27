@@ -1,6 +1,7 @@
 <?php
 	// start session
 	session_start();
+	require_once('define.php');
 
 	// redirect to homepage if logged in (if user has already logged in and enter the login page)
 	if(isset($_SESSION['userid'])){
@@ -28,19 +29,10 @@
             <div class="col-lg-6" >
                 <div class="card px-4"  >
 				<br>
-                    <h3 style="color: tomato; text-align:center;">Sign in with </h3>
-					<div class="social media text-center mr-3">
-                                <div class="bi bi-facebook">
-                                
-                                <div class="fa fa-twitter">
-                             
-                                <div class="fa fa-google">
-                                </div>
-                        </div>
-					<br> <br> 
-						<h7 style="color: tomato;">OR</h7>
+                    <h2 class="text-info" style="color: blue; text-align:center;">Sign In Here</h2>
+
 		        	<form method="POST" action="login_validation.php">
-		            	<fieldset>
+		            	
 						<div class="row form-group">
 							<label class="form-label mt-3">Email address</label>
 							<input name="username" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" required>
@@ -49,13 +41,26 @@
 							<input name="password" type="password" class="form-control" placeholder="Password" required>
 							
 						</div>
-						<div class="row mb-3 mt-4 px-3">
-							<button type="submit" name="login" class="btn btn-lg btn-danger btn-block"><span class="glyphicon glyphicon-log-in"></span> Login</button>		            	
+						<div class="row mt-2 mb-2 px-3" style="text-align:right;"> <small class="font-weight-bold"><a class="text-decoration-none" href="signup.php">Forgot Password?</a></small> </div>
+					
+						<div class="row mb-3 mt-1 px-3">
+							<button type="submit" name="login" class="btn-info btn btn-lg btn-block"><span class="glyphicon glyphicon-log-in"></span>Sign me in</button>		            	
 						</div>
-						<div class="row mb-4 px-3 text-center"> <small class="font-weight-bold">Don't have an account? <a class="text-decoration-none" href="signup.php">Register Now!</a></small> </div>
-						</fieldset>
-		        	</form>
-		    	
+					</form>
+						<span class="text-center mb-3 text-info"><h5>Or</h5></span>
+						<div class="row mb-3 mt-1 px-3">
+							<button type="submit" name="login" class="btn btn-lg btn-block" style="background-color:red; color:#fff;"><span class="glyphicon glyphicon-log-in"></span>Sign in with Google</button>		            	
+						</div>
+						
+                                <!-- <div class="bi bi-facebook"> -->
+                                
+                                <!-- <div class="fa fa-twitter"> -->
+                             
+                                
+                        
+					<div class="row mb-4 px-3 text-center"> <small class="font-weight-bold">Don't have an account? <a class="text-decoration-none" href="signup.php">Register Now!</a></small> </div>
+						
+		        	
 		    </div>
 		    <?php
 				// if there is a message set
