@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     <nav>
         <div class="container">
             <h2 class="log">
-                socialBook
+                <a href="index.php">socialBook</a>
             </h2>
             <div class="search-bar">
                 <i class="uil uil-search"></i>
@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             <div class="create">
                 <label class="btn btn-primary" for="create-post">Create</label>
                 <div class="profile-photo">
-                    <img src="./images/profile-1.jpg">
+                    <a href="profile.php"><img src="./images/profile-1.jpg"></a>
                 </div>
                 <label class="btn btn-primary" for="sign-out">
                     <a style="color:#fff;" href="logout.php">Sign Out</a>    
