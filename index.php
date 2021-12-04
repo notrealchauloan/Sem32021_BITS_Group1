@@ -5,19 +5,38 @@ include("classes/connect.php");
 include("classes/login.class.php");
 include("classes/post.class.php");
 
-// $post = "";
-
 // return to the login page if not logged in
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 	header('location:login.php');
 }
 
+// posting starts
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     $post = new Post();
     $id = $_SESSION['userid'];
-    $result = $post->create_post($id, $_POST);
+    $result = $post->create_post($id, $_POST); 
+
+    if($result == "")
+    {
+        header("Location: profile.php");
+        die;
+    }
+    else
+    {
+        echo "<div class='alert alert-info text-center'>";
+        echo $result;
+        echo "</div>";
+					    
+    }
 }
+
+// even if not submit form, still read posts from database
+    $post = new Post();
+    $user = new User();
+    $id = $_SESSION['userid'];
+    $posts = $post->get_posts($id); // posts is an array that contains rows of post
+    $user_details = $user->get_user($id);
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +83,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <img src="./images/profile-1.jpg">
                     </div>
                     <div class="handle">
-                        <h4>Diana Ayi</h4>
+                        <h4> 
+                            <?php
+                                echo $user_details['firstname'] . " " . $user_details['lastname'];
+                            ?>
+                        </h4>
                         <p class="text-muted">
                             @dayi
                         </p>

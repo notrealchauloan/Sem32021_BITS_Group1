@@ -10,9 +10,6 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 	header('location:login.php');
 }
 
-// $login = new User();
-// $user_data = $login->check_login($_SESSION['userid']);
-
 // posting starts
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
@@ -36,9 +33,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 // even if not submit form, still read posts from database
     $post = new Post();
+    $user = new User();
     $id = $_SESSION['userid'];
     $posts = $post->get_posts($id); // posts is an array that contains rows of post
-
+    $user_details = $user->get_user($id);
 
 ?>
 
@@ -122,8 +120,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                         <h2>
                                         
                                             <?php
-                                                $user = new User();
-                                                $user_details = $user->details($_SESSION['userid']);
                                                 echo $user_details['firstname'] . " " . $user_details['lastname'];
                                             ?>
                     
@@ -162,8 +158,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                             {
                                 foreach ($posts as $ROW)
                                 {
-                                    $user = new User();
-                                    $ROW_USER = $user->get_user($ROW['userid']);
+                                    // $user = new User();
+                                    $ROW_USER = $user->get_user($_SESSION['userid']);
+                                                
+                                    // $ROW_USER = $user->get_user($ROW['userid']);
                                     include("post.php");
                                 }
                             }
