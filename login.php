@@ -63,7 +63,7 @@
 		        	
 		    </div>
 		    <?php
-				// if there is a message set
+				// Error Message
 		    	if(isset($_SESSION['message'])){
 		    		?>
 		    			<div class="alert alert-info text-center">

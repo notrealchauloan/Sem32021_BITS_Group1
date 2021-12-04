@@ -26,7 +26,7 @@ class Signup
 
             if($key == "password")
             {
-                if($key !== $data['password_confirm'])
+                if($value !== $data['password_confirm'])
                 {
                     $this->error .= 'Your confirm password must match your password <br>';
                 }
@@ -49,7 +49,7 @@ class Signup
         $firstname = ucfirst($data['firstname']);
         $lastname = ucfirst($data['lastname']);
         $email = $data['email'];
-        $password = $data['password2'];
+        $password = $data['password_confirm'];
         $gender = $data['gender'];
         $sel1 = $data['sel1'];
         $sel2 = $data['sel2'];
