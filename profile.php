@@ -1,25 +1,173 @@
 <?php
-    session_start();
-    include("classes/connect.php");
-    include("classes/login.class.php");
+session_start();
 
-    // check if user is logged in
-    if(isset($_SESSION['socialbook_userid']) && is_numeric($_SESSION['socialbook_userid']))
+include("classes/connect.php");
+include("classes/login.class.php");
+include("classes/post.class.php");
+
+// return to the login page if not logged in
+if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
+	header('location:login.php');
+}
+
+// $login = new User();
+// $user_data = $login->check_login($_SESSION['userid']);
+
+// posting starts
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $post = new Post();
+    $id = $_SESSION['userid'];
+    $result = $post->create_post($id, $_POST); 
+
+    if($result == "")
     {
-        $id = $_SESSION['socialbook_userid'];
-        $login = new User();
-
-        $result = $login->check_login($id);
-        
-        if($result)
-        {
-            // retrieve data
-            echo "fine";
-        }
-        else
-        {
-            header("Location: login.php");
-            die;
-        }
+        header("Location: profile.php");
+        die;
     }
+    else
+    {
+        echo "<div class='alert alert-info text-center'>";
+        echo $result;
+        echo "</div>";
+					    
+    }
+}
+
+// even if not submit form, still read posts from database
+    $post = new Post();
+    $id = $_SESSION['userid'];
+    $posts = $post->get_posts($id); // posts is an array that contains rows of post
+
+
 ?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <title>SocialBook - Social Network for Mental Health Disease</title>
+    <link rel="stylesheet" href="profileStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <!------------------- NAVBAR --------------------->
+        <div class="container">
+            <h2 class="log">
+                <a href="index.php">socialBook</a>
+            <div class="search-bar">
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="Search for creators, inspirations, and projects">
+            </div>
+            <div class="create">
+                <label class="btn btn-primary" for="create-post">Create</label>
+                <div class="profile-photo">
+                <a style="color:#fff;" href="logout.php">Sign Out</a>    
+            </label>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container db-social">
+        <div class="jumbotron jumbotron-fluid"></div>
+        <div class="container">
+            <div class="middle">
+                <!------------------- PROFILE DESCRIPTION --------------------->
+                <div class="row justify-content-center">
+                    <div class="col-xl-11">
+                        <div class="widget head-profile has-shadow">
+                            <div class="widget-body pb-0">
+                                <div class="row d-flex align-items-center">
+                                    <div class="friend">
+                                        <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Add Friend</button>
+                                    </div>
+
+                                    <ul>
+                                        <li>
+                                            <div class="counter ">246</div>
+                                            <div class="heading ">Friends</div>
+                                        </li>
+                                        <li>
+                                            <div class="counter ">30</div>
+                                            <div class="heading ">Mutual Friends</div>
+                                        </li>
+                                    </ul>
+                                    <div class="liked-by" style="float: center;">
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-1.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-2.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-3.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-4.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-5.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-7.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-8.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-9.jpg "></span>
+                                        <span style="width:30px; height: 30px;"><img src="./images/profile-10.jpg "></span>
+                                    </div>
+
+                                    <div class="image-default ">
+                                        <img class="rounded-circle " src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 " alt="... ">
+                                    </div>
+                                    <div class="infos ">
+                                        <h2>
+                                        
+                                            <?php
+                                        <div class="location ">Las Vegas, Nevada, U.S.</div>
+                                        <hr>
+                                        <br>
+                                        <p>
+                                            An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="widget-body pb-0" style="width: 70%;">
+                    <!------------------- CREATE POST --------------------->
+                    <form method="POST" class="create-post">
+                        <div class="profile-photo">
+                            <img src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 ">
+                        </div>
+                        <input name="post" type="text" placeholder="What's on your mind, Kim?" id="create-post">
+                        
+                        <div class="create">
+                            <label for="submit_post">
+                                <input class="btn btn-primary" type="submit" value="Post" type="text">
+                            </label>
+                        </div>
+                    </form>
+                    <br>
+                    <div class="feeds ">
+                        <?php
+                            if($posts)
+                            {
+                                foreach ($posts as $ROW)
+                                {
+                                    $user = new User();
+                                    $ROW_USER = $user->get_user($ROW['userid']);
+                                    include("post.php");
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

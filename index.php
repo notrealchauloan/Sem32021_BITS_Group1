@@ -1,10 +1,24 @@
 <?php
 session_start();
 
+include("classes/connect.php");
+include("classes/login.class.php");
+include("classes/post.class.php");
+
+// $post = "";
+
 // return to the login page if not logged in
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 	header('location:login.php');
 }
+
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $post = new Post();
+    $id = $_SESSION['userid'];
+    $result = $post->create_post($id, $_POST);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -191,11 +205,11 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
                     </div>
                 </div>
                 <!------------------- END OF STORIES -------------------->
-                <form class="create-post">
+                <form method="POST" class="create-post">
                     <div class="profile-photo">
                         <img src="./images/profile-1.jpg">
                     </div>
-                    <input type="text" placeholder="What's on your mind, Diana?" id="create-post">
+                    <input name="post" type="text" placeholder="What's on your mind, Diana?" id="create-post">
                     <input type="submit" value="Post" class="btn btn-primary">
                 </form>
 
