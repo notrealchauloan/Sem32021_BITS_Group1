@@ -110,7 +110,7 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
                         <div class="feeds">
                             <!---------------- FRIENDS REQUEST ----------------->
                             <div class="right">
-                                <div class="friend-requests" style="float: right; width: 300px; vertical-align:top;">
+                                <div class="friend-requests" style="float: right; vertical-align:top; width: 25%;">
                                     <h4>Requests</h4>
                                     <!----- REQUEST 1----->
                                     <div class="request">
@@ -195,7 +195,7 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
                                 </div>
                             </div>
                             <!------------------- FEED 1 --------------------->
-                            <div class="feed" style="width:800px">
+                            <div class="feed" style="width:70%">
                                 <div class=" head ">
                                     <div class="user ">
                                         <div class="profile-photo ">
@@ -238,7 +238,7 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
                             </div>
                             <!---------------- END OF FEED ----------------->
                             <!------------------- FEED 2 --------------------->
-                            <div class="feed" style="width:800px">
+                            <div class="feed" style="width:70%">
                                 <div class="head">
                                     <div class="user ">
                                         <div class="profile-photo ">
@@ -281,7 +281,7 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
                             </div>
                             <!---------------- END OF FEED ----------------->
                             <!------------------- FEED 7 --------------------->
-                            <div class="feed" style="width:800px">
+                            <div class="feed" style="width:70%">
                                 <div class="head">
                                     <div class="user">
                                         <div class="profile-photo">
