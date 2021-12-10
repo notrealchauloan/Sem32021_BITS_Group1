@@ -18,6 +18,10 @@
                         {
                             $image = $user_details['profile_image'];
                         }
+                        else
+                        {
+                            $image = 'images/user_female.jpg'; 
+                        }
                     ?>
                     <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                 </div>

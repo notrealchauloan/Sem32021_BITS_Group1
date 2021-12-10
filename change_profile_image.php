@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     }
                     else
                     {
-                        $query = "UPDATE users SET cover_image = '$filename' WHERE userid = '$userid' LIMIT 1";
+                        $query = "UPDATE users SET profile_image = '$filename' WHERE userid = '$userid' LIMIT 1";
                     }
 
                     
@@ -78,6 +78,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     }
     
 }
+$user = new User();
+$id = $_SESSION['userid'];
+$user_details = $user->get_user($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

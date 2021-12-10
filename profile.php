@@ -102,6 +102,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                             {
                                                 $image = $user_details['profile_image'];
                                             }
+                                            else
+                                            {
+                                                $image = 'images/user_female.jpg'; 
+                                            }
                                         ?>
                                         <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                                     </div>
@@ -132,18 +136,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 
                 <div class="widget-body pb-0" style="width: 70%;">
                     <!------------------- CREATE POST --------------------->
-                    <form method="POST" class="create-post">
-                        <div class="profile-photo">
-                            <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
-                        </div>
-                        <input name="post" type="text" placeholder="What's on your mind, Kim?" id="create-post">
-                        
-                        <div class="create">
-                            <label for="submit_post">
-                                <input class="btn btn-primary" type="submit" value="Post" type="text">
-                            </label>
-                        </div>
-                    </form>
+                   <?php
+                         include("createPosts.php");
+                   ?>
                     <br>
                     <div class="feeds ">
                         <?php

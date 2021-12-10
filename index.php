@@ -216,13 +216,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     </div>
                 </div>
                 <!------------------- END OF STORIES -------------------->
-                <form method="POST" class="create-post">
-                    <div class="profile-photo">
-                        <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
-                    </div>
-                    <input name="post" type="text" placeholder="What's on your mind, Diana?" id="create-post">
-                    <input type="submit" value="Post" class="btn btn-primary">
-                </form>
+                <?php
+                    include("createPosts.php");
+                ?>
 
                 <!------------------- FEEDS --------------------->
                 <div class="feeds">
