@@ -11,7 +11,15 @@
             <div class="create">
                 <label class="btn btn-primary" for="create-post">Create</label>
                 <div class="profile-photo">
-                    <a href="profile.php"><img src="./images/profile-1.jpg"></a>
+                    <?php
+                        $profile_image = "";
+
+                        if(file_exists($user_details['profile_image']))
+                        {
+                            $image = $user_details['profile_image'];
+                        }
+                    ?>
+                    <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                 </div>
                 <label class="btn btn-primary" for="sign-out">
                 <a style="color:#fff;" href="logout.php">Sign Out</a>    

@@ -3,7 +3,7 @@
     <div class="head ">
         <div class="user ">
             <div class="profile-photo ">
-                <img src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80">
+                <img class="rounded-circle " src="<?php echo $image; ?>" alt="... ">    
             </div>
             <div class="ingo ">
                 <h3>

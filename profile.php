@@ -95,7 +95,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                     </div>
 
                                     <div class="image-default ">
-                                        <img class="rounded-circle " src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 " alt="... ">
+                                        <?php
+                                            $profile_image = "";
+
+                                            if(file_exists($user_details['profile_image']))
+                                            {
+                                                $image = $user_details['profile_image'];
+                                            }
+                                        ?>
+                                        <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                                     </div>
                                     <div class="infos ">
                                         <h2>
@@ -105,7 +113,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                             ?>
                     
                                         </h2>
-                                        <div class="location ">Las Vegas, Nevada, U.S.</div>
+                                        <div class="location ">
+                                            <a href="change_profile_image.php?change=profile">Change Profile Image</a>
+                                            |
+                                            <a href="change_profile_image.php?change=cover">Change Cover</a>
+                                        </div>
                                         <hr>
                                         <br>
                                         <p>
@@ -122,7 +134,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     <!------------------- CREATE POST --------------------->
                     <form method="POST" class="create-post">
                         <div class="profile-photo">
-                            <img src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 ">
+                            <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                         </div>
                         <input name="post" type="text" placeholder="What's on your mind, Kim?" id="create-post">
                         

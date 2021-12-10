@@ -54,8 +54,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 <body>
     <?php
         include('header.php');
-    ?>
+        $profile_image = "";
 
+        if(file_exists($user_details['profile_image']))
+        {
+            $image = $user_details['profile_image'];
+        }
+    ?>
     <!------------------------- MAIN -------------------------->
     <main>
         <div class="container">
@@ -63,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             <div class="left">
                 <a class="profile">
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
+                        <img src="<?php echo $image; ?>" alt="... ">
                     </div>
                     <div class="handle">
                         <h4> 
@@ -71,9 +76,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                 echo $user_details['firstname'] . " " . $user_details['lastname'];
                             ?>
                         </h4>
-                        <p class="text-muted">
+                        <!-- <p class="text-muted">
                             @dayi
-                        </p>
+                        </p> -->
                     </div>
                 </a>
 
@@ -213,7 +218,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 <!------------------- END OF STORIES -------------------->
                 <form method="POST" class="create-post">
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
+                        <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                     </div>
                     <input name="post" type="text" placeholder="What's on your mind, Diana?" id="create-post">
                     <input type="submit" value="Post" class="btn btn-primary">
