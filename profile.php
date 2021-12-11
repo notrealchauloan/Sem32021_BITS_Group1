@@ -59,7 +59,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         include('header.php');
     ?>
     <div class="container db-social">
-        <div class="jumbotron jumbotron-fluid"></div>
+        <div class="jumbotron jumbotron-fluid">
+            <img src="images/feed-1.jpg" width="1000" height="400" alt="">
+        </div>
         <div class="container">
             <div class="middle">
                 <!------------------- PROFILE DESCRIPTION --------------------->
@@ -102,9 +104,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                             {
                                                 $image = $user_details['profile_image'];
                                             }
-                                            else
+                                            else if($user_details['gender'] == 'F')
                                             {
                                                 $image = 'images/user_female.jpg'; 
+                                            } 
+                                            else if($user_details['gender'] == 'M')
+                                            {
+                                                $image = 'images/user_male.jpg';
+                                            }
+                                            else if($user_details['gender'] == 'O')
+                                            {
+                                                $image = 'images/user_other.jpg';
                                             }
                                         ?>
                                         <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
