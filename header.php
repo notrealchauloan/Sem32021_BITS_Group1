@@ -18,10 +18,19 @@
                         {
                             $image = $user_details['profile_image'];
                         }
-                        else
+                        else if($user_details['gender'] == 'F')
                         {
                             $image = 'images/user_female.jpg'; 
+                        } 
+                        else if($user_details['gender'] == 'M')
+                        {
+                            $image = 'images/user_male.jpg';
                         }
+                        else if($user_details['gender'] == 'O')
+                        {
+                            $image = 'images/user_other.jpg';
+                        }
+                                        
                     ?>
                     <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
                 </div>
