@@ -12,7 +12,7 @@
                 <label class="btn btn-primary" for="create-post">Create</label>
                 <div class="profile-photo">
                     <?php
-                        $profile_image = "";
+                        $image = "";
 
                         if(file_exists($user_details['profile_image']))
                         {

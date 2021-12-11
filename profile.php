@@ -60,7 +60,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     ?>
     <div class="container db-social">
         <div class="jumbotron jumbotron-fluid">
-            <img src="images/feed-1.jpg" width="1000" height="400" alt="">
+            <?php
+                $image = "";
+
+                if(file_exists($user_details['cover_image']))
+                {
+                    $image = $user_details['cover_image'];
+                }
+            ?>
+        
+            <img src="<?php echo $image; ?>" alt="">
         </div>
         <div class="container">
             <div class="middle">
@@ -98,7 +107,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
                                     <div class="image-default ">
                                         <?php
-                                            $profile_image = "";
+                                            $image = "";
 
                                             if(file_exists($user_details['profile_image']))
                                             {

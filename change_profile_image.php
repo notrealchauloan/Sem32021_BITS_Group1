@@ -10,15 +10,17 @@ include("classes/image.class.php");
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 	header('location:login.php');
 }
-
+$user = new User();
+$id = $_SESSION['userid'];
+$user_details = $user->get_user($id);
 
 // posting starts
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    echo "<pre>";
-    print_r($_POST);
-    print_r($_FILES);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_POST);
+    // print_r($_FILES);
+    // echo "</pre>";
     
 
     if(isset($_FILES['file']['name']) && $_FILES['file']['name'] != "")
@@ -28,22 +30,49 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $allowed_size = (1024 * 1024) * 7;
             if($_FILES['file']['size'] < $allowed_size)
             {
-                $filename = "uploads/" . $_FILES['file']['name'];
+                // create folder to store images
+                $folder = "uploads/" . $user_details['userid'] . "/";
+
+                if(!file_exists($folder))
+                {
+                    mkdir($folder, 0777, true);
+                }
+                
+                $image = new Image();
+
+                $filename = $folder . $image->generate_filename(20) . ".jpg";
+
                 move_uploaded_file($_FILES['file']['tmp_name'],$filename);  
 
-                $image = new Image();
-                $image->crop_image($filename,$filename,150,150);
+                $change = "profile";
 
+                // check for mode
+                if(isset($_GET['change']))
+                {
+                    $change = $_GET['change'];
+                }
+
+                if($change == "cover")
+                {
+                    if(file_exists($user_details['cover_image']))
+                    {
+                        unlink($user_details['cover_image']);
+                    }
+                    $image->crop_image($filename,$filename,1000,300);
+                }
+                else
+                {
+                    if(file_exists($user_details['profile_image']))
+                    {
+                        unlink($user_details['profile_image']);
+                    }
+                    $image->crop_image($filename,$filename,150,150);
+                }
+                
                 if(file_exists($filename))
                 {
                     $userid = $_SESSION['userid'];
-                    $change = "profile";
-
-                    // check for mode
-                    if(isset($_GET['change']))
-                    {
-                        $change = $_GET['change'];
-                    }
+                    
 
                     if($change == "cover")
                     {
@@ -103,6 +132,17 @@ $user_details = $user->get_user($id);
             <form class="create-post" method="post" enctype="multipart/form-data">
                 <input type="file" name="file">
                 <input class="btn btn-primary" type="submit" value="Change">
+                <?php
+                    if(isset($_GET['change']) && $_GET['change'] == 'cover')
+                    {
+                        $change = 'cover';
+                        echo "<img src='$user_details[cover_image]' style='max-width:500px;'>";
+                    }
+                    else
+                    {
+                        echo "<img src='$user_details[profile_image]' style='max-width:500px;'>";
+                    }
+                ?>
             </form>
         </div>
     </main>
