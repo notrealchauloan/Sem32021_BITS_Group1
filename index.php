@@ -87,8 +87,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     <a class="menu-item active">
                         <span><i class="uil uil-home"></i></span><h3>Home</h3>
                     </a>
-                    <a class="menu-item">
-                        <span><i class="uil uil-compass"></i></span><h3>Explore</h3>
+                    <a href="help.php" class="menu-item">
+                        <span><i class="uil uil-compass"></i></span><h3 href="help.php">Professional Helps</h3>
                     </a>
                     <a class="menu-item" id="notifications">
                         <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span><h3>Notifications</h3>
