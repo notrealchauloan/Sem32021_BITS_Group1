@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 06:30 AM
+-- Generation Time: Dec 12, 2021 at 02:57 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -58,7 +58,9 @@ INSERT INTO `posts` (`id`, `postid`, `userid`, `content`, `images`, `has_image`,
 (22, 638650255594971, 8853, 'at 10:37', '', 0, 0, 0, '2021-12-04 15:37:21'),
 (23, 794377, 259, 'yes', '', 0, 0, 0, '2021-12-05 05:46:39'),
 (24, 4375885822, 259, 'tea', '', 0, 0, 0, '2021-12-05 05:47:05'),
-(25, 4849287816901384779, 173833, 'Okay', '', 0, 0, 0, '2021-12-06 05:12:16');
+(25, 4849287816901384779, 173833, 'Okay', '', 0, 0, 0, '2021-12-06 05:12:16'),
+(26, 371299595803, 173833, 'fjads', '', 0, 0, 0, '2021-12-08 05:35:11'),
+(27, 4712904658609, 259, 'I like your dress', '', 0, 0, 0, '2021-12-10 17:51:19');
 
 -- --------------------------------------------------------
 
@@ -89,12 +91,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userid`, `firstname`, `lastname`, `email`, `password`, `gender`, `url_address`, `feeldown`, `lackinterest`, `focus`, `energy`, `profile_image`, `cover_image`, `date`) VALUES
-(18, 8853, 'Chau', 'Loan', 'notrealchauloan@gmail.com', 'conmeo', 'O', 'chau.loan.8853', NULL, NULL, NULL, NULL, '', '', '2021-11-21 11:11:24'),
+(18, 8853, 'Chau', 'Loan', 'notrealchauloan@gmail.com', 'conmeo', 'O', 'chau.loan.8853', NULL, NULL, NULL, NULL, 'uploads/8853/5bRe1Uoiacm8QsKNZ7fu', 'uploads/8853/ASTtcNObW0ixFQcxJim', '2021-12-11 05:45:10'),
 (19, 35044183, 'Chau', 'Loan', 'notrealchauloan@gmail.com', '231fsd332', 'O', 'chau.loan.35044183', NULL, NULL, NULL, NULL, '', '', '2021-11-21 11:12:16'),
 (20, 2147483647, 'Loan', 'Lich', 'conmeo@concho.com', 'conmeo', 'M', 'loan.lich.383100746697051680', NULL, NULL, NULL, NULL, '', '', '2021-11-21 17:20:07'),
 (21, 2147483647, 'Loanfd', 'Akldsf', 'notrealchauloan@gmail.com', 'adfsda', 'F', 'loanfd.akldsf.529817194268090', NULL, NULL, NULL, NULL, '', '', '2021-11-22 05:47:00'),
 (22, 342956669, 'Af', 'Sdfa', 'notrealchauloan@gmail.com', 'df', '', 'af.sdfa.342956669', NULL, NULL, NULL, NULL, '', '', '2021-11-26 15:32:20'),
-(23, 259, 'Loan', 'Lich', 'notrealchauloan@gmail.com', 'meomeo02', 'M', 'loan.lich.0259', 0, 0, 0, 0, '', '', '2021-11-26 15:53:22'),
+(23, 259, 'Loan', 'Lich', 'notrealchauloan@gmail.com', 'meomeo02', 'M', 'loan.lich.0259', 0, 0, 0, 0, 'uploads/259/NKvjQbl0IkbNUTaQbyco.jpg', 'uploads/259/i8cciqR1OhVhZeXVrI.jpg', '2021-12-12 08:28:52'),
 (24, 2147483647, 'Sg', 'Sf', 'notrealchauloan@gmail.com', 'sfdsg', '', 'sg.sf.245423617905', 0, 0, 0, 0, '', '', '2021-11-26 15:54:37'),
 (25, 2147483647, 'Adf', 'Adf', '4135@erkl.com', '432', 'M', 'adf.adf.1261151168812813741', 0, 0, 0, 0, '', '', '2021-11-26 16:00:16'),
 (26, 2147483647, 'Meo', 'Felix', 'conmeo@ratxinh.com', 'conmeo', '', 'meo.felix.576368486671713', 1, 3, 1, 2, '', '', '2021-11-26 16:00:53'),
@@ -109,7 +111,8 @@ INSERT INTO `users` (`id`, `userid`, `firstname`, `lastname`, `email`, `password
 (35, 6516697033295, 'Thiswouldbeuppercase', 'Firstletter', 'test1@test.com', 'test', 'O', 'thiswouldbeuppercase.firstletter.6516697033295', 2, 2, 3, 3, '', '', '2021-12-04 16:34:06'),
 (36, 173833, 'Test', 'Ngay', 'test0612@test.com', 'test0612', 'M', 'test.ngay.173833', 0, 0, 1, 0, '', '', '2021-12-06 05:01:44'),
 (37, 1701165, 'Lk', 'Lk', 'test@conmeo.com', 'conmeo', 'O', 'lk.lk.1701165', 0, 0, 0, 0, '', '', '2021-12-06 05:37:19'),
-(38, 7483418973090856, 'Dsfg', 'Adg', 'conmeo@conmeo.om', 'conmeo', 'O', 'dsfg.adg.7483418973090856', 2, 1, 2, 1, '', '', '2021-12-06 05:38:37');
+(38, 7483418973090856, 'Dsfg', 'Adg', 'conmeo@conmeo.om', 'conmeo', 'O', 'dsfg.adg.7483418973090856', 2, 1, 2, 1, 'uploads//5', 'uploads//r', '2021-12-11 05:30:57'),
+(39, 229022192, 'Loan', 'Châu', 'testtencodau@gmail.com', 'testtencodau', 'M', 'loan.châu.229022192', 3, 1, 1, 0, '', '', '2021-12-11 03:48:35');
 
 --
 -- Indexes for dumped tables
@@ -142,13 +145,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
