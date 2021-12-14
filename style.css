@@ -523,7 +523,7 @@ main .container .right {
 
 .right .request .info {
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
   margin-bottom: 1rem;
 }
 
@@ -778,3 +778,16 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     margin-right: 1rem;
   }
 }
+
+.info .profile-photo{
+  width: 5rem;
+}
+
+.friend-name{
+  width: 70%;
+}
+/* 
+.request{
+  width: 32%;
+  display:inline-block;
+} */
