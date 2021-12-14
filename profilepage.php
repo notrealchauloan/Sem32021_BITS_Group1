@@ -1,49 +1,64 @@
 <?php
 session_start();
 
+include("classes/connect.php");
+include("classes/login.class.php");
+include("classes/post.class.php");
+
 // return to the login page if not logged in
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 	header('location:login.php');
 }
+
+// posting starts
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $post = new Post();
+    $id = $_SESSION['userid'];
+    $result = $post->create_post($id, $_POST); 
+
+    if($result == "")
+    {
+        header("Location: profile.php");
+        die;
+    }
+    else
+    {
+        echo "<div class='alert alert-info text-center'>";
+        echo $result;
+        echo "</div>";
+					    
+    }
+}
+
+// even if not submit form, still read posts from database
+    $post = new Post();
+    $user = new User();
+    $id = $_SESSION['userid'];
+    $posts = $post->get_posts($id); // posts is an array that contains rows of post
+    $user_details = $user->get_user($id);
+
 ?>
-    <!doctype html>
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-        <title>SocialBook - Social Network for Mental Health Disease</title>
-        <link rel="stylesheet" href="profileStyle.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
-        <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+<!doctype html>
+<html lang="en">
 
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <title>SocialBook - Social Network for Mental Health Disease</title>
+    <link rel="stylesheet" href="profileStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
 
     <body>
-        <nav>
-            <!------------------- NAVBAR --------------------->
-            <div class="container">
-                <h2 class="log">
-                    socialBook
-                </h2>
-                <div class="search-bar">
-                    <i class="uil uil-search"></i>
-                    <input type="search" placeholder="Search for creators, inspirations, and projects">
-                </div>
-                <div class="create">
-                    <label class="btn btn-primary" for="create-post">Create</label>
-                    <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
-                    </div>
-                    <label class="btn btn-primary" for="sign-out">
-                <a style="color:#fff;" href="logout.php">Sign Out</a>    
-            </label>
-                </div>
-            </div>
-        </nav>
 
+    <?php
+        include('header.php');
+    ?>
         <div class="container db-social">
             <div class="jumbotron jumbotron-fluid"></div>
             <div class="container">

@@ -52,6 +52,70 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+    <style>
+
+/* The Modal (background) */
+
+.modal{
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  display: none;
+  transition: opacity 400ms ease-in;
+}
+.modal .modal-content {
+  background: var(--color-white);
+  padding: 5px 20px 13px 20px;
+  margin: 20% auto;
+  border-radius: var(--card-border-radius);
+  width: 400px;
+  height: 300px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.modal-image img{
+    border-radius: 50%;
+    width: 150px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+
+</style>
 </head>
 
 <body>
@@ -79,8 +143,48 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <div class="widget head-profile has-shadow">
                             <div class="widget-body pb-0">
                                 <div class="row d-flex align-items-center">
-                                    <div class="friend">
-                                        <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Add Friend</button>
+                                    <div class="setting">
+                                        <button type="button" id="myBtn" style="float: right; font-weight:bold" class="btn btn-primary">Edit Profile </button> </a>
+                                            <!-- The Modal -->
+                                        <div id="myModal" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                    <span class="close">&times;</span>
+                                                    <h2>Edit Profile </h2>
+                                                    <br>  
+                                                    <div class="modal-image"
+                                                        <?php
+                                                            $image = "";
+   
+                                               if(file_exists($user_details['profile_image']))
+                                               {
+                                                   $image = $user_details['profile_image'];
+                                               }
+                                               else if($user_details['gender'] == 'F')
+                                               {
+                                                   $image = 'images/user_female.jpg'; 
+                                               } 
+                                               else if($user_details['gender'] == 'M')
+                                               {
+                                                   $image = 'images/user_male.jpg';
+                                               }
+                                               else if($user_details['gender'] == 'O')
+                                               {
+                                                   $image = 'images/user_other.jpg';
+                                               }
+                                           ?>
+                                           <a href="profile.php"><img src="<?php echo $image; ?>" alt="... "></a>
+                                                </div>
+                                       <br>
+                                            <a href="change_profile_image.php?change=profile">
+                                                <button style="float: left;" class="btn btn-primary"> Change Profile Image </button> 
+                                            </a> 
+                                            <a href="change_profile_image.php?change=cover"> 
+                                                <button style="float: left; " class="btn btn-primary" >Change Cover </button>  
+                                            </a>
+                                                    
+                                        </div>   
+                                        </div>
                                     </div>
 
                                     <ul>
@@ -136,11 +240,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                             ?>
                     
                                         </h2>
-                                        <div class="location ">
-                                            <a href="change_profile_image.php?change=profile">Change Profile Image</a>
-                                            |
-                                            <a href="change_profile_image.php?change=cover">Change Cover</a>
-                                        </div>
+                                
                                         <hr>
                                         <br>
                                         <p>
@@ -179,7 +279,33 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         </div>
     </div>
     </div>
+    <script>
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 
 

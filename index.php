@@ -634,10 +634,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-8.jpg">
+                                <a href="profilepage.php">
+                            <img src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 ">
+                                </a>
                             </div>
                             <div>
-                                <h5>Hajia Bintu</h5>
+                                <h5>Kim Perron</h5>
                                 <p class="text-muted">8 mutual friends</p>
                             </div>
                         </div>
