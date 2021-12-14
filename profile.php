@@ -4,6 +4,7 @@ session_start();
 include("classes/connect.php");
 include("classes/login.class.php");
 include("classes/post.class.php");
+include("classes/image.class.php");
 
 // return to the login page if not logged in
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
@@ -15,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 {
     $post = new Post();
     $id = $_SESSION['userid'];
-    $result = $post->create_post($id, $_POST); 
+    $result = $post->create_post($id, $_POST, $_FILES); 
 
     if($result == "")
     {
@@ -37,6 +38,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     $id = $_SESSION['userid'];
     $posts = $post->get_posts($id); // posts is an array that contains rows of post
     $user_details = $user->get_user($id);
+
+// display friend
+    $id = $_SESSION['userid'];
+    $friends = $user->get_friends($id);
+
 
 ?>
 
@@ -119,11 +125,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 </head>
 
 <body>
-    <?php
-        include('header.php');
-    ?>
-    <div class="container db-social">
+<?php
+    include('header.php');
+?>
+<div class="container db-social">
+        <!-- Cover Image -->
         <div class="jumbotron jumbotron-fluid">
+            
             <?php
                 $image = "";
 
@@ -132,9 +140,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     $image = $user_details['cover_image'];
                 }
             ?>
-        
             <img src="<?php echo $image; ?>" alt="">
+
         </div>
+        <!-- Cover Image Ends -->
+
+        <!-- Feed -->
         <div class="container">
             <div class="middle">
                 <!------------------- PROFILE DESCRIPTION --------------------->
@@ -248,29 +259,56 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                         </p>
                                     </div>
                                 </div>
+                                <hr>
+                                <br>
+                                <p>
+                                    An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.
+                                </p>
                             </div>
+                            <!-- Profile Description Ends -->
                         </div>
                     </div>
                 </div>
-                
-                <div class="widget-body pb-0" style="width: 70%;">
-                    <!------------------- CREATE POST --------------------->
+                <div class="feeds">
+                    <!-- Friends -->
+                    <div class="right">
+                        <div class="friend-requests" style="float: left; width: 23%;">
+                            <h4>Friends</h4>                        
+                            <div class="request">
+                                <?php
+                                if($friends)
+                                {
+                                    foreach ($friends as $FRIEND_ROW)
+                                    {
+                                        include("friends.php");
+                                    }
+                                }
+                            ?>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    <!-- End of friend -->
+
+                <div style="width: 75%; float: right;">
+                <!-- What's on your mind -->
                    <?php
                          include("createPosts.php");
                    ?>
                     <br>
-                    <div class="feeds ">
-                        <?php
-                            if($posts)
+                <!-- Ends of what's on your mind -->
+                <!-- Feed display  -->
+                    <?php
+                        if($posts)
+                        {
+                            foreach ($posts as $ROW)
                             {
-                                foreach ($posts as $ROW)
-                                {
-                                    // $user = new User();
-                                    $ROW_USER = $user->get_user($_SESSION['userid']);
-                                                
-                                    // $ROW_USER = $user->get_user($ROW['userid']);
-                                    include("post.php");
-                                }
+                                // $user = new User();
+                                $ROW_USER = $user->get_user($_SESSION['userid']);
+                                            
+                                // $ROW_USER = $user->get_user($ROW['userid']);
+                                include("post.php");
                             }
                         ?>
                     </div>

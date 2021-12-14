@@ -1,5 +1,5 @@
 <!------------------- FEED 1 --------------------->
-<div class="feed ">
+<div class="feed">
     <div class="head ">
         <div class="user ">
             <div class="profile-photo ">
@@ -25,7 +25,15 @@
     </div>
 
     <div class="photo">
-        <img src="./images/feed-1.jpg ">
+        <?php
+            if(file_exists($ROW['images']))
+            {
+        ?>
+            <img src="<?php echo $ROW['images'] ?>" alt="">
+        <?php
+            }
+        ?>
+        
     </div>
 
     <div class="action-buttons ">

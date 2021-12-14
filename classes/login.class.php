@@ -52,6 +52,22 @@ class User extends Database{
             return false;
         }
     }
+
+    public function get_friends($id)
+    {
+        $query = "SELECT * FROM users WHERE userid != '$id' ORDER BY id DESC LIMIT 4";
+        $DB = new Database();
+        $result = $DB->read($query);
+
+        if($result)
+        {
+            return $result;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 
 // class Login

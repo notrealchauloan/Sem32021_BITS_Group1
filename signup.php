@@ -53,15 +53,18 @@
 </head>
 
 <body background="./images/welcome.png">
-	
-	<div class="container px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+	<!--Main container  -->
+<div class="container px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+        <!-- card div -->
         <div class="card card0 border-0" style="background-color: hsl(252, 100%, 90%)" >
+            <!-- row div -->
             <div class="row d-flex"  >
+                <!-- col 6 (1) -->
                 <div class="col-lg-6"  >
                     
                     <div class="card2 card border-0 px-4 py-5"  >
                         <div class="row mb-4 px-3">
-                            <h1 class="mb-0 mr-4 mt-2 text-center" >Create an account</h6>
+                            <h1 class="mb-0 mr-4 mt-2 text-center" >Create an account</h1>
                      
                         <form method="post" action="signup.php">
                            
@@ -104,56 +107,60 @@
                                     Other
                                 </label>  <br>
                             </div>
-                        
-                <div class="col-lg-6" >
-                    <div class="right "  >
-                        <h4 class="mb-0 mr-4 mt-2 text-center" >General Mental Health Questions</h4>
-                        
-                            <div class="form-group">
-                                <label for="exampleInputEmail1" class="form-label mt-4">How often have you been bothered by feeling down, depressed or hopeless?</label> 
-                                <select name="sel1" class="form-select" id="exampleSelect1">
-                                    <option value="0">Not at all</option>
-                                    <option value="1">Several days</option>
-                                    <option value="2">More than half the days</option>
-                                    <option value="3">Nearly every day</option>
-                                  </select>
-                                  <label for="exampleInputEmail1" class="form-label mt-4">How often have you had little interest or pleasure in doing things </label> 
-                                <select name="sel2" class="form-select" id="exampleSelect1">
-                                    <option value="0">Not at all</option>
-                                    <option value="1">Several days</option>
-                                    <option value="2">More than half the days</option>
-                                    <option value="3">Nearly every day</option>
-                                  </select>
-                                  <label for="exampleInputEmail1" class="form-label mt-4">How often have you had trouble concentrating on things? </label>
-                                <select name="sel3" class="form-select" id="exampleSelect1">
-                                    <option value="0">Not at all</option>
-                                    <option value="1">Several days</option>
-                                    <option value="2">More than half the days</option>
-                                    <option value="3">Nearly every day</option>
-                                </select>
-
-                                <label for="exampleInputEmail1" class="form-label mt-4">How often do you feel tired or having little energy? </label>
-                                <select name="sel4" class="form-select" id="exampleSelect1">
-                                    <option value="0">Not at all</option>
-                                    <option value="1">Several days</option>
-                                    <option value="2">More than half the days</option>
-                                    <option value="3">Nearly every day</option>
-                                </select>
-                            </div>
-
-                        <br>
-                        <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary">Register</button> </div>
-                               
-                        <div class="row mb-4 px-3 text-center"> <small class="font-weight-bold">Already have an account? <a href="login.php" class="text-danger text-decoration-none">Sign In</a></small> </div>
-                           
+                        </div>
                     </div>
+                </div>
+                <!-- End of col 6 (1) -->
+                <!-- Col 6 (2) -->
+                <div class="col-lg-6" >
+                    <div class="border-0 px-4 py-5"  >
+                        <div class="right "  >
+                            <h4 class="mb-0 mr-4 mt-2 text-center" >General Mental Health Questions</h4>
+                            
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-label mt-4">How often have you been bothered by feeling down, depressed or hopeless?</label> 
+                                    <select name="sel1" class="form-select" id="exampleSelect1">
+                                        <option value="0">Not at all</option>
+                                        <option value="1">Several days</option>
+                                        <option value="2">More than half the days</option>
+                                        <option value="3">Nearly every day</option>
+                                    </select>
+                                    <label for="exampleInputEmail1" class="form-label mt-4">How often have you had little interest or pleasure in doing things </label> 
+                                    <select name="sel2" class="form-select" id="exampleSelect1">
+                                        <option value="0">Not at all</option>
+                                        <option value="1">Several days</option>
+                                        <option value="2">More than half the days</option>
+                                        <option value="3">Nearly every day</option>
+                                    </select>
+                                    <label for="exampleInputEmail1" class="form-label mt-4">How often have you had trouble concentrating on things? </label>
+                                    <select name="sel3" class="form-select" id="exampleSelect1">
+                                        <option value="0">Not at all</option>
+                                        <option value="1">Several days</option>
+                                        <option value="2">More than half the days</option>
+                                        <option value="3">Nearly every day</option>
+                                    </select>
+
+                                    <label for="exampleInputEmail1" class="form-label mt-4">How often do you feel tired or having little energy? </label>
+                                    <select name="sel4" class="form-select" id="exampleSelect1">
+                                        <option value="0">Not at all</option>
+                                        <option value="1">Several days</option>
+                                        <option value="2">More than half the days</option>
+                                        <option value="3">Nearly every day</option>
+                                    </select>
+                                </div>
+
+                            <br>
+                            <div class="row mb-3 px-3"> <button type="submit" class="btn btn-primary">Register</button> </div>
+                                
+                            <div class="row mb-4 px-3 text-center"> <small class="font-weight-bold">Already have an account? <a href="login.php" class="text-danger text-decoration-none">Sign In</a></small> </div>  
+                        </div>
                     </div>     
-                        
-                </div>
-                </form>
-                </div>
-                
-            </div>
-            
-        </div>
-    </div>
+                   </div>     
+                </div> 
+                <!-- End of col 6 (2) -->
+                </form>             
+            </div> <!-- End of row div -->
+        </div> <!-- End of card div -->
+</div> <!-- End of main container -->
+</body>
+</html>
