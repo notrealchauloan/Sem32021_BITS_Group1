@@ -260,10 +260,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                     </div>
                                 </div>
                                 <hr>
-                                <br>
-                                <p>
-                                    An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.
-                                </p>
+                                
+                                
                             </div>
                             <!-- Profile Description Ends -->
                         </div>
@@ -310,6 +308,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                 // $ROW_USER = $user->get_user($ROW['userid']);
                                 include("post.php");
                             }
+                        }
                         ?>
                     </div>
                 </div>

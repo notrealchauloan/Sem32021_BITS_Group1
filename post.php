@@ -10,6 +10,34 @@
                     <a href="profile.php">
                         <?php
                             echo $ROW_USER['firstname'] . " " . $ROW_USER['lastname'];
+                        
+                            if($ROW['is_profile_image'])
+                            {
+                                $gender = "his";
+                                if($ROW_USER['gender'] == "F")
+                                {
+                                    $gender = "her";
+                                } 
+                                else if($ROW_USER['gender'] == "O")
+                                {
+                                    $gender = "";
+                                }
+                                echo '<span style="font-weight:normal; color:#aaa;"> has updated' . $gender . ' profile image</span>';
+                            }
+
+                            if($ROW['is_cover_image'])
+                            {
+                                $gender = "his";
+                                if($ROW_USER['gender'] == "F")
+                                {
+                                    $gender = "her";
+                                } 
+                                else if($ROW_USER['gender'] == "O")
+                                {
+                                    $gender = "";
+                                }
+                                echo '<span style="font-weight:normal; color:#aaa;"> has updated' . $gender . ' profile image</span>';
+                            }
                         ?>
                     </a>
                 </h3>

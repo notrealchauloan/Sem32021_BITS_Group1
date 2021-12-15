@@ -77,15 +77,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     if($change == "cover")
                     {
                         $query = "UPDATE users SET cover_image = '$filename' WHERE userid = '$userid' LIMIT 1";
+                        $_POST['is_cover_image'] = 1;
                     }
                     else
                     {
                         $query = "UPDATE users SET profile_image = '$filename' WHERE userid = '$userid' LIMIT 1";
+                        $_POST['is_profile_image'] = 1;
                     }
 
-                    
                     $DB = new Database();
                     $DB->save($query);
+
+                    // create a post of update images
+                    $post = new Post();
+                    
+                    $post->create_post($id, $_POST, $filename); 
 
                     header('location:profile.php');
                     die;
