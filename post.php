@@ -92,12 +92,12 @@
         <b>
             <a href="profile.php">
                 <?php
-                    echo $ROW_USER['firstname'] . " " . $ROW_USER['lastname'];
+                    echo htmlspecialchars($ROW_USER['firstname']) . " " . htmlspecialchars($ROW_USER['lastname']);
                 ?>
             </a>
         </b> 
         <?php
-            echo $ROW['content'];
+            echo htmlspecialchars($ROW['content']);
         ?>
         <!-- <span class="harsh-tag ">#lifestyle</span></p> -->
     </div>

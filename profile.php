@@ -10,7 +10,7 @@ if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 $user = new User();
 $user_details = $user->get_user($_SESSION['userid']);
 
-if(isset($_GET['id']))
+if(isset($_GET['id']) && is_numeric($_GET['id']))
 {
     $profile = new Profile();
     $profile_data = $profile->get_profile($_GET['id']);
