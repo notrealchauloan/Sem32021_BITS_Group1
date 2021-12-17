@@ -1,14 +1,23 @@
 <?php
-session_start();
-
-include("classes/connect.php");
-include("classes/login.class.php");
-include("classes/post.class.php");
-include("classes/image.class.php");
+include("classes/autoload.php");
 
 // return to the login page if not logged in
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){
 	header('location:login.php');
+}
+
+// Get user data
+$user = new User();
+$user_details = $user->get_user($_SESSION['userid']);
+
+if(isset($_GET['id']))
+{
+    $profile = new Profile();
+    $profile_data = $profile->get_profile($_GET['id']);
+    if(is_array($profile_data))
+    {
+        $user_details = $profile_data[0];
+    }
 }
 
 // posting starts
@@ -34,16 +43,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 // even if not submit form, still read posts from database
     $post = new Post();
-    $user = new User();
-    $id = $_SESSION['userid'];
+    $id = $user_details['userid'];
     $posts = $post->get_posts($id); // posts is an array that contains rows of post
-    $user_details = $user->get_user($id);
 
 // display friend
-    $id = $_SESSION['userid'];
-    $friends = $user->get_friends($id);
-
-
+    $friends = $user->get_friends($id);   
 ?>
 
 <!doctype html>
@@ -125,9 +129,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 </head>
 
 <body>
-<?php
-    include('header.php');
-?>
+<!-- Header -->
+    <?php
+        include("header.php");
+    ?>
+<!-- End of Header -->
 <div class="container db-social">
         <!-- Cover Image -->
         <div class="jumbotron jumbotron-fluid">
@@ -303,7 +309,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                             foreach ($posts as $ROW)
                             {
                                 // $user = new User();
-                                $ROW_USER = $user->get_user($_SESSION['userid']);
+                                $ROW_USER = $user->get_user($user_details['userid']);
                                             
                                 // $ROW_USER = $user->get_user($ROW['userid']);
                                 include("post.php");

@@ -1,9 +1,5 @@
 <?php
-session_start();
-
-include("classes/connect.php");
-include("classes/login.class.php");
-include("classes/post.class.php");
+include("classes/autoload.php");
 
 // return to the login page if not logged in
 if (!isset($_SESSION['userid']) ||(trim ($_SESSION['userid']) == '')){

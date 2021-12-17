@@ -1,6 +1,8 @@
 <form method="POST" class="create-post" enctype="multipart/form-data">
     <div class="profile-photo">
-        <a href="profile.php"><img class="rounded-circle " src="<?php echo $image; ?>" alt="... "></a>
+        <a href="profile.php"><img class="rounded-circle " src="<?php 
+        $ROW_USER = $user->get_user($user_details['userid']);
+        echo $ROW_USER['profile_image']; ?>" alt="... "></a>
     </div>
     <input name="post" type="text" placeholder="What's on your mind, <?php echo $user_details['firstname']; ?> ?" id="create-post">
     <input type="file" name="file">

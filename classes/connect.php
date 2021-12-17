@@ -3,7 +3,7 @@
     {
         private $host = "localhost";
         private $username = "root";
-        private $password = "root";
+        private $password = "";
         private $db = "socialbook";
 
         protected $connection;

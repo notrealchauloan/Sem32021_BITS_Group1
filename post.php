@@ -3,7 +3,12 @@
     <div class="head ">
         <div class="user ">
             <div class="profile-photo ">
-                <img class="rounded-circle " src="<?php echo $image; ?>" alt="... ">    
+                <img class="rounded-circle " src="
+                <?php 
+                
+                    echo $ROW_USER['profile_image'];
+                ?>
+                " alt="... ">    
             </div>
             <div class="ingo ">
                 <h3>
@@ -22,7 +27,7 @@
                                 {
                                     $gender = "";
                                 }
-                                echo '<span style="font-weight:normal; color:#aaa;"> has updated' . $gender . ' profile image</span>';
+                                echo '<span style="font-weight:normal; color:#aaa;"> has updated ' . $gender . ' profile image</span>';
                             }
 
                             if($ROW['is_cover_image'])
@@ -36,7 +41,7 @@
                                 {
                                     $gender = "";
                                 }
-                                echo '<span style="font-weight:normal; color:#aaa;"> has updated' . $gender . ' profile image</span>';
+                                echo '<span style="font-weight:normal; color:#aaa;"> has updated ' . $gender . ' profile image</span>';
                             }
                         ?>
                     </a>

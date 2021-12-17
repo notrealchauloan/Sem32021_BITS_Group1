@@ -36,7 +36,8 @@
                 </div>
                 <label class="btn btn-primary" for="sign-out">
                 <a style="color:#fff;" href="logout.php">Sign Out</a>    
-            </label>
+                </label>
+                
             </div>
         </div>
     </nav>

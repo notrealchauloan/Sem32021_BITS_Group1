@@ -1,7 +1,5 @@
 <?php
-    session_start();
-    include("classes/connect.php");
-    include("classes/signup.class.php");
+    include("classes/autoload.php");
 
     // define variables and set to empty values
     $firstname = $lastname = $email =  $password = $password_confirm = $gender = $sel1 = $sel2 = $sel3 = $sel4 = "";
