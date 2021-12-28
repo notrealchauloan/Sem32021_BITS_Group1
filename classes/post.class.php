@@ -137,6 +137,29 @@ class Post
         $DB->write($query);
         
     }
+
+    public function i_own_post($postid, $userid)
+    {
+        
+        if(!is_numeric($postid))
+        {
+            return false;
+        }
+
+        $query = "SELECT * FROM posts WHERE postid = '$postid' LIMIT 1";
+        
+        $DB = new Database();
+        $result = $DB->read($query);
+        
+        if(is_array($result))
+        {
+            if($result[0]['userid'] == $userid)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 ?>

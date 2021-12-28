@@ -65,19 +65,20 @@ if(isset($_GET['id'])){
                     if($error != "")
                     {
                         echo $error;
-                    }
-                    if($ROW)
+                    } else
                     {
                         echo " <h3>Are you sure you want to delete this post?</h3> ";
 
                         $user = new User();
                         $ROW_USER = $user->get_user($ROW['userid']);
                         include("postDelete.php");
+
+                        echo "<input name='postid' type='hidden' value='$ROW[postid]'>";
+                        echo "<input id='post_button' class='btn btn-primary' type='submit' value='Delete'>";
                     }
                     ?>
                 
-                <input name="postid" type="hidden" value="<?php echo $ROW['postid']; ?>">
-                <input id="post_button" class="btn btn-primary" type="submit" value="Delete">
+                
             </form>
         </div>
     </main>

@@ -55,9 +55,14 @@
             </div>
         </div>
         <!-- <span class="edit "><i class="uil uil-ellipsis-h "></i></span> -->
-        <span class="edit">
-            <a href="edit.php?id=<?php echo $ROW['postid']; ?>">Edit</a>
-        </span>
+        <?php
+            $Post = new Post();
+            if($Post->i_own_post($ROW['postid'],$_SESSION['userid'])){
+                echo "<span class='edit'>
+                        <a href='edit.php?id=$ROW[postid]'>Edit</a>
+                    </span>";
+            }
+        ?>
     </div>
 
     <div class="photo">
