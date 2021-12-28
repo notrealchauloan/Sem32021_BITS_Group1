@@ -100,6 +100,43 @@ class Post
             return false;
         }
     }
+
+    public function get_one_post($postid)
+    {
+        if(!is_numeric($postid))
+        {
+            return false;
+        }
+        $query = "SELECT * FROM posts WHERE postid = '$postid' LIMIT 1";
+        $DB = new Database();
+        $result = $DB->read($query);
+
+        if($result)
+        {
+            return $result[0];
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function delete_post($postid)
+    {
+        
+        if(!is_numeric($postid))
+        {
+            return false;
+        }
+
+        $query = "DELETE FROM posts WHERE postid = '$postid' LIMIT 1";
+        
+        // echo $query;
+        // // die;
+        $DB = new Database();
+        $DB->write($query);
+        
+    }
 }
 
 ?>

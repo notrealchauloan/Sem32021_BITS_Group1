@@ -54,10 +54,7 @@
                 </small>
             </div>
         </div>
-        <!-- <span class="edit "><i class="uil uil-ellipsis-h "></i></span> -->
-        <span class="edit">
-            <a href="edit.php?id=<?php echo $ROW['postid']; ?>">Edit</a>
-        </span>
+        
     </div>
 
     <div class="photo">
