@@ -148,7 +148,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <!-------------------- END NOTIFICATION POPUP ---------------->
                     </a>
                     <a class="menu-item" id="messages-notification">
-                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Messagse</h3>
+                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Message</h3>
+                    </a>
+                    <a class="menu-item" href="bot.php">
+                        <span><i class="uil uil-envelope-alt"></i></span><h3>Talk to chatbot</h3>
                     </a>
                     <a class="menu-item">
                         <span><i class="uil uil-bookmark"></i></span><h3>Bookmarks</h3>
