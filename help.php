@@ -236,7 +236,7 @@ footer p{
 		<!--details/comment------>
 		<p>Hi. My name is Lynda. I am a Person-Centred Counsellor (MNCS ProfAccred) providing one to one counselling sessions for adults, couples and children.  Counselling is not about me offering you advice or direction, but about me supporting you to find the solutions that fit you as an individual, helping you move forward with clarity and new insights towards a positive outcome.</p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -255,7 +255,7 @@ footer p{
 		<!--details/comment------>
 		<p>Do you feel depressed or anxious and don't know what to do to feel well again? Are you in a controlling relationship and don't know what to do next? Do you want to be you again, be a happy and respected person? I am a counsellor helping you to improve your mental health by finding new coping strategies. Together we will explore the underlying reasons of your emotional struggles.  </p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -275,7 +275,7 @@ footer p{
 		<p>I specialise in the Person-Centred Approach. There are no particular areas or problems in which I focus my work. I specialise in creating an environment which encourages and develops personal growth.
 If you feel that you may benefit from counselling but are concerned about costs, please do not let this deter you.</p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -294,7 +294,7 @@ If you feel that you may benefit from counselling but are concerned about costs,
 		<!--details/comment------>
 		<p>We all struggle to make sense of experiences at times, for example, when our life is in transition as we are leaving home or taking on new caring responsibilities. As a counsellor I can offer the opportunity to talk in confidence. I have worked in mental health for over 20 years and have trained as a social worker as well as a counsellor.   </p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -313,7 +313,7 @@ If you feel that you may benefit from counselling but are concerned about costs,
 		<!--details/comment------>
 		<p>I am an Integrative counsellor, using a range of approaches to help you individually. I have training in gestalt and psychodynamic counselling, with both individuals and groups. Your view of the world is important in its impact on how you cope in life. I see counselling as a partnership. I am a qualified Equine Facilitated Psychotherapist..</p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -332,7 +332,7 @@ If you feel that you may benefit from counselling but are concerned about costs,
 		<!--details/comment------>
 		<p>I have experience working with young people both in an educational setting and as a Counsellor. I specifically have knowledge and experience of working with young people who have additional learning needs, such as Autism and ADHD. Areas of counselling I deal with include (but are not limited to); Anxiety, Stress, Exam stress, Depression, Trauma, etc...</p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -351,7 +351,7 @@ If you feel that you may benefit from counselling but are concerned about costs,
 		<!--details/comment------>
 		<p>Hi, my name is Emma and I am a qualified Person-centred counsellor (MBACP). Being Person-centred means that the sessions I offer are client-led, valuing the unique experience of each individual. We can all face times in our lives where we feel like we need extra support or just a listening ear.</p>
 		<!--btn--------->
-		<a href="#">
+		<a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -370,7 +370,7 @@ If you feel that you may benefit from counselling but are concerned about costs,
 		<!--details/comment------>
 		<p>If you feel like you need someone to talk to or a safe space to explore your thoughts and feelings without being judged then please get in heading with me and we can arrange a session to begin your therapeutic journey.</p>
 		<!--btn--------->
-		<a href="#"> 
+		<a href="booking.php"> 
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Book an Appointment</button>
         </a>
 	</div>
@@ -384,7 +384,7 @@ If you feel that you may benefit from counselling but are concerned about costs,
 	<!--input----------------->
 	<div class="contact-input">
 		<input type="email" placeholder="Example@gmail.com"/>
-        <a href="#">
+        <a href="booking.php">
         <button type="button" style="float: right; font-weight:bold" class="btn btn-primary">Continue</button>
         </a>
 	</div>
