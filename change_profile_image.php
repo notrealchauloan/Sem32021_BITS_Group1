@@ -1,3 +1,34 @@
+<style>
+input[type="file"] {
+    display: none;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+.upload-container {
+  background: white;
+  padding: 5px 20px 13px 20px;
+  margin: auto;
+  border-radius: var(--card-border-radius);
+  width: 80%;
+  height: 500px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.upload-container img{
+    width: auto;
+    display: block;
+    margin:auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form { 
+    text-align: center;
+}
+
+</style>
 <?php
 session_start();
 
@@ -131,24 +162,36 @@ $user_details = $user->get_user($id);
         include("header.php");
     ?>
     <main>
-        <div class="middle">
-            <form class="create-post" method="post" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <input class="btn btn-primary" type="submit" value="Change">
+    <div class="fade">
+    <div class="upload-container">
+        <br>
+        <h2 style="text-align:center;"> Update Image</h2>
+        <br>
                 <?php
                     if(isset($_GET['change']) && $_GET['change'] == 'cover')
                     {
                         $change = 'cover';
-                        echo "<img src='$user_details[cover_image]' style='max-width:500px;'>";
+                        echo "<img src='$user_details[cover_image]'>";
                     }
                     else
                     {
-                        echo "<img src='$user_details[profile_image]' style='max-width:500px;'>";
+                        echo "<img src='$user_details[profile_image]'>";
                     }
                 ?>
-            </form>
-        </div>
+            </br>
+           
+            <form class="create-post" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <label for="file" class="custom-file-upload">
+            <i class="uil uil-image-upload" style="font-size: 40px";> </i>
+            </label>
+                <input id="file" type="file" name="file">
+                <input class="btn btn-primary" type="submit" value="Change">
+            </form>               
+            
+    </div>
+                </div>
     </main>
-    
+
 </body>
 </html>

@@ -86,7 +86,7 @@
         <div class="interaction-buttons ">
             <span> 
                 <a href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">
-                    <i class="uil uil-heart "></i>
+                    <i onclick="myFunction(this, 'red')" class="uil uil-heart "></i>
                 </a>
             </span>
             <span><i class="uil uil-comment-dots "></i></span>

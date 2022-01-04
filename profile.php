@@ -84,10 +84,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 .modal .modal-content {
   background: var(--color-white);
   padding: 5px 20px 13px 20px;
-  margin: 20% auto;
+  margin: 10% auto;
   border-radius: var(--card-border-radius);
-  width: 400px;
-  height: 300px;
+  width: 40%;
+  height: 45%;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -122,6 +122,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+.button_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
 }
 
 
@@ -169,7 +175,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                                     <span class="close">&times;</span>
                                                     <h2>Edit Profile </h2>
                                                     <br>  
-                                                    <div class="modal-image"
+                                                    <div class="modal-image">
                                                         <?php
                                                             $image = "";
    
@@ -191,15 +197,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                                                }
                                            ?>
                                            <a href="profile.php"><img src="<?php echo $image; ?>" alt="... "></a>
-                                                </div>
-                                       <br>
+                                            <br>
+                                            <div class="button_container">
                                             <a href="change_profile_image.php?change=profile">
-                                                <button style="float: left;" class="btn btn-primary"> Change Profile Image </button> 
-                                            </a> 
-                                            <a href="change_profile_image.php?change=cover"> 
-                                                <button style="float: left; " class="btn btn-primary" >Change Cover </button>  
+                                                <button class="btn btn-primary"> Change Profile Image </button> 
                                             </a>
-                                                    
+                                            <a href="change_profile_image.php?change=cover"> 
+                                                <button class="btn btn-primary" >Change Cover </button>  
+                                            </a>
+                                            </div> 
                                         </div>   
                                         </div>
                                     </div>
