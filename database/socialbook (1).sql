@@ -127,7 +127,14 @@ INSERT INTO `chatbot` (`id`, `queries`, `replies`) VALUES
 (1, "hi|hello|hey|wassup|what's up", 'Hello there!'),
 (2, "how are you|how old are you|what's your name", "I am just a bot... I don't have an answer for that"),
 (3, "I am stressed|I am tired", "Tell me everything, I'm here for you~"),
-(4, "joke", "You are a joke.");
+(4, "joke", "You are a joke."),
+(5, "arrange|meeting|psychiatrist", "Please click the 'Professional Helps' tab to schedule a meeting!"),
+(6, "help", "You should talk to a psychiatrist for help."),
+(7, "fun|funny", "I am programmed to be funny."),
+(8, "time", "Look at the bottom right corner on your computer screen!"),
+(9, "dumb|stupid", "Why are you so mean?"),
+(10, "socialbook|social book|", "socialBook is a wonderful place where you are free to express your feelings, 
+and you can contact a professional to help with your emotions anytime!");
 
 --
 -- Indexes for table `posts`
@@ -168,3 +175,24 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE `reservations` (
+  `res_id` int(11) NOT NULL,
+  `res_date` date,
+  `res_slot` varchar(32) DEFAULT NULL,
+  `res_name` varchar(255) NOT NULL,
+  `res_email` varchar(255) NOT NULL,
+  `res_tel` varchar(60) NOT NULL,
+  `res_notes` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`res_id`),
+  ADD KEY `res_date` (`res_date`),
+  ADD KEY `res_slot` (`res_slot`),
+  ADD KEY `res_name` (`res_name`),
+  ADD KEY `res_email` (`res_email`),
+  ADD KEY `res_tel` (`res_tel`);
+
+ALTER TABLE `reservations`
+  MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;
