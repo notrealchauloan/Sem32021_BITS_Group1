@@ -59,7 +59,7 @@
             $Post = new Post();
             if($Post->i_own_post($ROW['postid'],$_SESSION['userid'])){
                 echo "<span class='edit'>
-                        <a href='edit.php?id=$ROW[postid]'>Edit</a>
+                        <a href='edit.php?postid=$ROW[postid]'>Edit</a>
                     </span>";
             }
         ?>
@@ -77,9 +77,18 @@
         
     </div>
 
+    <?php
+        $likes = "";
+
+        $likes = ($ROW['likes'] > 0) ? "Liked by " . $ROW['likes'] . " people" : "" ;
+    ?>
     <div class="action-buttons ">
         <div class="interaction-buttons ">
-            <span><i class="uil uil-heart "></i></span>
+            <span> 
+                <a href="like.php?type=post&id=<?php echo $ROW['postid'] ?>">
+                    <i class="uil uil-heart "></i>
+                </a>
+            </span>
             <span><i class="uil uil-comment-dots "></i></span>
             <span><i class="uil uil-share-alt "></i></span>
         </div>
@@ -92,7 +101,7 @@
         <span><img src="./images/profile-10.jpg "></span>
         <span><img src="./images/profile-4.jpg "></span>
         <span><img src="./images/profile-15.jpg "></span>
-        <p>Liked by <b>Ernest Achiever</b> and <b>2,323 others</b></p>
+        <p><b><?php echo $likes; ?></b></p>
     </div>
 
     <div class="caption ">

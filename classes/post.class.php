@@ -160,6 +160,66 @@ class Post
         }
         return false;
     }
+
+    public function like_post($id, $type, $userid)
+    {
+        if($type == "post")
+        {
+            $DB = new Database();
+                        
+            $sql = "SELECT likes FROM likes WHERE type='post' && contentid = '$id' LIMIT 1";
+            $result = $DB->read($sql);
+
+            // print_r($result);
+            if(is_array($result))
+            {
+                $likes = json_decode($result[0]['likes'], true);
+                // $likes = json_decode($result, true);
+                $user_ids = array_column($likes, "userid");
+
+                if(!in_array($userid, $user_ids))
+                {
+                    // $likes = json_decode($result['likes']);
+                    $arr["userid"] = $userid;
+                    $arr["date"] = date("Y-m-d H:i:s");
+                    
+                    $likes[] = $arr;
+                    $likes_string = json_encode($likes);
+
+                    $sql = "UPDATE likes SET likes = '$likes_string' WHERE type='post' && contentid='$id' LIMIT 1";
+                    $DB->save($sql);
+
+                    $sql = "UPDATE posts SET likes = likes + 1 WHERE postid = '$id' LIMIT 1";
+                    $DB->save($sql);
+                }
+                else
+                {
+                    $key = array_search($userid, $user_ids);
+                    unset($likes[$key]);
+
+                    $likes_string = json_encode($likes);
+
+                    $sql = "UPDATE likes SET likes = '$likes_string' WHERE type='post' && contentid='$id' LIMIT 1";
+                    $DB->save($sql);
+
+                    $sql = "UPDATE posts SET likes = likes - 1 WHERE postid = '$id' LIMIT 1";
+                    $DB->save($sql);
+                }
+            } 
+            else 
+            {
+                $arr["userid"] = $userid;
+                $arr["date"] = date("Y-m-d H:i:s");
+
+                $arr2[] = $arr;
+                
+                $likes = json_encode($arr);
+
+                $sql = "INSERT INTO likes(type, contentid, likes) VALUES ('$type', '$id', '$likes')";
+                $DB->save($sql);
+            }
+        }
+    }
 }
 
 ?>
