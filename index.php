@@ -98,13 +98,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <h3>Notifications</h3>
                         <!-------------------- NOTIFICATION POPUP ---------------->
                         <div class="notifications-popup">
-                                <div class="profile-photo">
-                                    <img src="./images/profile-2.jpg">
-                                </div>
-                                <div class="notification-body">
-                                    <b>Keke Benjamin</b> accepted your friend request
-                                    <small class="text-muted">2 DAYS AGO</small>
-                                </div>
+                            <div class="profile-photo">
+                                <img src="./images/profile-2.jpg">
+                            </div>
+                            <div class="notification-body">
+                                <b>Keke Benjamin</b> accepted your friend request
+                                <small class="text-muted">2 DAYS AGO</small>
                             </div>
                             <div>
                                 <div class="profile-photo">
