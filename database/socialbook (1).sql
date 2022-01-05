@@ -127,13 +127,13 @@ INSERT INTO `chatbot` (`id`, `queries`, `replies`) VALUES
 (1, "hi|hello|hey|wassup|what's up", 'Hello there!'),
 (2, "how are you|how old are you|what's your name", "I am just a bot... I don't have an answer for that"),
 (3, "I am stressed|I am tired", "Tell me everything, I'm here for you~"),
-(4, "joke", "You are a joke."),
-(5, "arrange|meeting|psychiatrist", "Please click the 'Professional Helps' tab to schedule a meeting!"),
-(6, "help", "You should talk to a psychiatrist for help."),
-(7, "fun|funny", "I am programmed to be funny."),
-(8, "time", "Look at the bottom right corner on your computer screen!"),
-(9, "dumb|stupid", "Why are you so mean?"),
-(10, "socialbook|social book|", "socialBook is a wonderful place where you are free to express your feelings, 
+(4, "tell me a joke", "You are a joke."),
+(5, "can you help me arrange|meeting|psychiatrist", "Please click the 'Professional Helps' tab to schedule a meeting!"),
+(6, "i need help", "You should talk to a psychiatrist for help."),
+(7, "you are fun|funny", "I am programmed to be funny."),
+(8, "can you tell me the time", "Look at the bottom right corner on your computer screen!"),
+(9, "you are dumb|stupid", "Why are you so mean?"),
+(10, "what is socialbook|social book|", "socialBook is a wonderful place where you are free to express your feelings, 
 and you can contact a professional to help with your emotions anytime!");
 
 --

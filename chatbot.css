@@ -40,6 +40,7 @@ body {
     border: 1px solid lightgrey;
     border-top: 0px;
     margin-top: 100px;
+    margin: 0 auto;
 }
 
 .wrapper .title {
@@ -55,7 +56,7 @@ body {
 
 .wrapper .form {
     padding: 20px 15px;
-    height: 500px;
+    height: 350px;
     overflow-y: auto;
 }
 
@@ -92,7 +93,6 @@ body {
     border-radius: 10px;
     padding: 8px 10px;
     font-size: 14px;
-    word-break: break-all;
 }
 
 .form .user-inbox .msg-header p {

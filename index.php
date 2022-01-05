@@ -37,6 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,7 +47,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
     <!-- STYLESHEET -->
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./chatbot.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
+
 <body>
     <?php
         include('header.php');
@@ -67,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <img src="<?php echo $image; ?>" alt="... ">
                     </div>
                     <div class="handle">
-                        <h4> 
+                        <h4>
                             <?php
                                 echo $user_details['firstname'] . " " . $user_details['lastname'];
                             ?>
@@ -81,16 +86,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 <!-------------------- SIDEBAR ------------------------->
                 <div class="sidebar">
                     <a class="menu-item active">
-                        <span><i class="uil uil-home"></i></span><h3>Home</h3>
+                        <span><i class="uil uil-home"></i></span>
+                        <h3>Home</h3>
                     </a>
                     <a href="help.php" class="menu-item">
-                        <span><i class="uil uil-compass"></i></span><h3 href="help.php">Professional Helps</h3>
+                        <span><i class="uil uil-compass"></i></span>
+                        <h3 href="help.php">Professional Helps</h3>
                     </a>
                     <a class="menu-item" id="notifications">
-                        <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span><h3>Notifications</h3>
+                        <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span>
+                        <h3>Notifications</h3>
                         <!-------------------- NOTIFICATION POPUP ---------------->
                         <div class="notifications-popup">
-                            <div>
                                 <div class="profile-photo">
                                     <img src="./images/profile-2.jpg">
                                 </div>
@@ -148,23 +155,80 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <!-------------------- END NOTIFICATION POPUP ---------------->
                     </a>
                     <a class="menu-item" id="messages-notification">
-                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span><h3>Message</h3>
+                        <span><i class="uil uil-envelope-alt"><small class="message-count">6</small></i></span>
+                        <h3>Message</h3>
                     </a>
-                    <a class="menu-item" href="bot.php">
-                        <span><i class="uil uil-envelope-alt"></i></span><h3>Talk to chatbot</h3>
+                    <a class="menu-item" id="chatbot">
+                        <span><i class="uil uil-envelope-alt"></i><small class="chatbot-count">6</small></span>
+                        <h3>Talk to chatbot</h3>
+                        <!-------------------- TALK TO CHATBOT POPUP ---------------->
+                        <div class="chatbot-popup">
+                            <div>
+                                <div class="wrapper" id="chatbot-wrapper">
+                                    <div class="title" id="chatbot-title">Online Chatbot</div>
+                                    <div class="form" id="chatbot-form">
+                                        <div class="bot-inbox inbox">
+                                            <div class="icon" id="chatbot-icon">
+                                                <i class="fas fa-user" style="margin-left:0;color:white;"></i>
+                                            </div>
+                                            <div class="msg-header">
+                                                <p id="chatbot-message">Hello there, how can I help you?</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="typing-field">
+                                        <div class="input-data">
+                                            <input id="data" type="text" placeholder="Type something here.." required>
+                                            <button id="send-btn">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    $(document).ready(function(){
+                                        $("#send-btn").on("click", function(){
+                                            $value = $("#data").val();
+                                            $msg = '<div class="user-inbox inbox"><div class="msg-header"><p>'+ $value +'</p></div></div>';
+                                            $(".form").append($msg);
+                                            $("#data").val('');
+                                            
+                                            // start ajax code
+                                            $.ajax({
+                                                url: 'message.php',
+                                                type: 'POST',
+                                                data: 'text='+$value,
+                                                success: function(result){
+                                                    $replay = '<div class="bot-inbox inbox"><div class="icon chatbot-icon"><i class="fas fa-user" style="margin-left:0;color:white;"></i></div><div class="msg-header"><p class="chatbot-message">'+ result +'</p></div></div>';
+                                                    $(".form").append($replay);
+                                                    var color = $("#chatbot-icon").css("background-color");
+                                                    $(".chatbot-icon").css('background-color', color);
+                                                    $(".chatbot-message").css('background-color', color);
+                                                    // when chat goes down the scroll bar automatically comes to the bottom
+                                                    $(".form").scrollTop($(".form")[0].scrollHeight);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-------------------- END TALK TO CHATBOT POPUP ---------------->
                     </a>
                     <a class="menu-item">
-                        <span><i class="uil uil-bookmark"></i></span><h3>Bookmarks</h3>
+                        <span><i class="uil uil-bookmark"></i></span>
+                        <h3>Bookmarks</h3>
                     </a>
                     <a class="menu-item">
-                        <span><i class="uil uil-chart-line"></i></span><h3>Analytics</h3>
+                        <span><i class="uil uil-chart-line"></i></span>
+                        <h3>Analytics</h3>
                     </a>
                     <a class="menu-item" id="theme">
-                        <span><i class="uil uil-palette"></i></span><h3>Theme</h3>
+                        <span><i class="uil uil-palette"></i></span>
+                        <h3>Theme</h3>
                     </a>
                     <a class="menu-item">
-                        <span><i class="uil uil-setting"></i></span><h3>Settings</h3>
-                    </a>                        
+                        <span><i class="uil uil-setting"></i></span>
+                        <h3>Settings</h3>
+                    </a>
                 </div>
                 <!------------------- END OF SIDEBAR -------------------->
                 <label for="create-post" class="btn btn-primary">Create Post</label>
@@ -261,7 +325,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Just recieved gifts from my online friends. <span class="harsh-tag">#lifestyle</span></p>
+                            <p><b>Lana Rose</b> Just recieved gifts from my online friends. <span
+                                    class="harsh-tag">#lifestyle</span></p>
                         </div>
                         <div class="comments text-muted">View all 277 comments</div>
                     </div>
@@ -306,7 +371,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Started my day with fulfil enjoyments. How about you guys? <span class="harsh-tag">#behappy</span></p>
+                            <p><b>Lana Rose</b> Started my day with fulfil enjoyments. How about you guys? <span
+                                    class="harsh-tag">#behappy</span></p>
                         </div>
                         <div class="comments text-muted">View all 3,473 comments</div>
                     </div>
@@ -351,7 +417,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Sunflowers are great. Happy summertime <span class="harsh-tag">#summertime</span></p>
+                            <p><b>Lana Rose</b> Sunflowers are great. Happy summertime <span
+                                    class="harsh-tag">#summertime</span></p>
                         </div>
                         <div class="comments text-muted">View all 277 comments</div>
                     </div>
@@ -396,7 +463,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Ain't it greate if we can be ourselves in public. <span class="harsh-tag">#lifestyle</span></p>
+                            <p><b>Lana Rose</b> Ain't it greate if we can be ourselves in public. <span
+                                    class="harsh-tag">#lifestyle</span></p>
                         </div>
                         <div class="comments text-muted">View all 277 comments</div>
                     </div>
@@ -441,7 +509,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Skateboarding is an exciment for me. <span class="harsh-tag">#Beyourself</span></p>
+                            <p><b>Lana Rose</b> Skateboarding is an exciment for me. <span
+                                    class="harsh-tag">#Beyourself</span></p>
                         </div>
                         <div class="comments text-muted">View all 277 comments</div>
                     </div>
@@ -486,7 +555,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Meeting up with friends. It's joyful to talk and express yourself <span class="harsh-tag">#friends</span></p>
+                            <p><b>Lana Rose</b> Meeting up with friends. It's joyful to talk and express yourself <span
+                                    class="harsh-tag">#friends</span></p>
                         </div>
                         <div class="comments text-muted">View all 277 comments</div>
                     </div>
@@ -531,7 +601,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
 
                         <div class="caption">
-                            <p><b>Lana Rose</b> Express yourself in the most comfortable way. <span class="harsh-tag">#expressing</span></p>
+                            <p><b>Lana Rose</b> Express yourself in the most comfortable way. <span
+                                    class="harsh-tag">#expressing</span></p>
                         </div>
                         <div class="comments text-muted">View all 277 comments</div>
                     </div>
@@ -634,7 +705,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <div class="info">
                             <div class="profile-photo">
                                 <a href="profilepage.php">
-                            <img src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 ">
+                                    <img
+                                        src="https://images.unsplash.com/photo-1486302913014-862923f5fd48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80 ">
                                 </a>
                             </div>
                             <div>
@@ -680,67 +752,68 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
-            <!--====================== END OF RIGHT ==========================-->
+        </div>
+        <!--====================== END OF RIGHT ==========================-->
         </div>
     </main>
 
- <!--================================================ THEME CUSTOMIZATION =============================================-->
- <div class="customize-theme">
-    <div class="card">
-        <h2>Customize your view</h2>
-        <p class="text-muted">Manage your font size, color, and background.</p>
+    <!--================================================ THEME CUSTOMIZATION =============================================-->
+    <div class="customize-theme">
+        <div class="card">
+            <h2>Customize your view</h2>
+            <p class="text-muted">Manage your font size, color, and background.</p>
 
-        <!------------ FONT SIZES ------------->
-        <div class="font-size">
-            <h4>Font Size</h4>
-            <div>
-                <h6>Aa</h6>
-            <div class="choose-size">
-                <span class="font-size-1"></span>
-                <span class="font-size-2"></span>
-                <span class="font-size-3"></span>
-                <span class="font-size-4"></span>
-                <span class="font-size-5"></span>
-            </div>
-            <h3>Aa</h3>
-            </div>
-        </div>
-
-        <!------------ PRIMARY COLORS ------------->
-        <div class="color">
-            <h4>Color</h4>
-            <div class="choose-color">
-            <span class="color-1 active"></span>
-            <span class="color-2"></span>
-            <span class="color-3"></span>
-            <span class="color-4"></span>
-            <span class="color-5"></span>
-            </div>
-        </div>
-
-        <!---------- BACKGROUND COLORS ------------>
-        <div class="background">
-            <h4>Background</h4>
-            <div class="choose-bg">
-                <div class="bg-1 active">
-                    <span></span>
-                    <h5 for="bg-1">Light</h5>
+            <!------------ FONT SIZES ------------->
+            <div class="font-size">
+                <h4>Font Size</h4>
+                <div>
+                    <h6>Aa</h6>
+                    <div class="choose-size">
+                        <span class="font-size-1"></span>
+                        <span class="font-size-2"></span>
+                        <span class="font-size-3"></span>
+                        <span class="font-size-4"></span>
+                        <span class="font-size-5"></span>
+                    </div>
+                    <h3>Aa</h3>
                 </div>
-                <div class="bg-2">
-                    <span></span>
-                    <h5>Dim</h5>
+            </div>
+
+            <!------------ PRIMARY COLORS ------------->
+            <div class="color">
+                <h4>Color</h4>
+                <div class="choose-color">
+                    <span class="color-1 active"></span>
+                    <span class="color-2"></span>
+                    <span class="color-3"></span>
+                    <span class="color-4"></span>
+                    <span class="color-5"></span>
                 </div>
-                <div class="bg-3">
-                    <span></span>
-                    <h5 for="bg-3">Lights Out</h5>
+            </div>
+
+            <!---------- BACKGROUND COLORS ------------>
+            <div class="background">
+                <h4>Background</h4>
+                <div class="choose-bg">
+                    <div class="bg-1 active">
+                        <span></span>
+                        <h5 for="bg-1">Light</h5>
+                    </div>
+                    <div class="bg-2">
+                        <span></span>
+                        <h5>Dim</h5>
+                    </div>
+                    <div class="bg-3">
+                        <span></span>
+                        <h5 for="bg-3">Lights Out</h5>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="./index.js"></script>
+    <script src="./index.js"></script>
 </body>
+
 </html>
