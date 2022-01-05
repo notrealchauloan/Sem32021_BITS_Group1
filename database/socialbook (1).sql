@@ -118,9 +118,9 @@ INSERT INTO `users` (`id`, `userid`, `firstname`, `lastname`, `email`, `password
 -- Table structure for table `chatbot`
 --
 CREATE TABLE `chatbot` (
-    `id` type bigint(20) NOT NULL,
-    `queries` type varchar(300),
-    `replies` type varchar(300),
+    `id` bigint(20) NOT NULL,
+    `queries` varchar(300),
+    `replies` varchar(300),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `chatbot` (`id`, `queries`, `replies`) VALUES
