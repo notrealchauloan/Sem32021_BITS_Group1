@@ -250,7 +250,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <div class="profile-photo">
                             <img src="./images/profile-9.jpg">
                         </div>
-                        <p class="name">Lilla James/p>
+                        <p class="name">Lilla James</p>
                     </div>
                     <div class="story">
                         <div class="profile-photo">
