@@ -11,8 +11,8 @@ $user_details = $user->get_user($id);
 $Post = new Post();
 
 $error = "";
-if(isset($_GET['id'])){
-    $ROW = $Post->get_one_post($_GET['id']);
+if(isset($_GET['postid'])){
+    $ROW = $Post->get_one_post($_GET['postid']);
 
     if(!$ROW)
     {
