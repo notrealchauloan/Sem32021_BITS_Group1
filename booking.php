@@ -5,7 +5,21 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+   
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/lux/bootstrap.min.css" integrity="sha256-uVM4yw5cb/I41+eHvw16wD50J6zq1M7BsxEsSKdoTw4=" crossorigin="anonymous">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>Booking Form HTML Template</title>
@@ -16,15 +30,8 @@
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 
 </head>
 <style>
@@ -40,6 +47,9 @@
 	right: 0;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
+h2, h5, i{
+	color: white;
 }
 
 #booking {
@@ -134,7 +144,7 @@
 }
 
 .booking-form .submit-btn {
-	display: inline-block;
+	display: block;
 	color: #fff;
 	background-color: #1e62d8;
 	font-weight: 700;
@@ -143,6 +153,9 @@
 	border: none;
 	-webkit-transition: 0.2s all;
 	transition: 0.2s all;
+	margin-left: auto;
+    margin-right: auto
+
 }
 
 .booking-form .submit-btn:hover,
@@ -166,37 +179,134 @@
 	font-size: 16px;
 	color: rgba(255, 255, 255, 0.8);
 }
-
+.modal-confirm {		
+	color: #434e65;
+	width: 525px;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+}
+.modal-confirm .modal-header {
+	background: #47c9a2;
+	border-bottom: none;   
+	position: relative;
+	text-align: center;
+	margin: -20px -20px 0;
+	border-radius: 5px 5px 0 0;
+	padding: 35px;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 36px;
+	margin: 10px 0;
+}
+.modal-confirm .form-control, .modal-confirm .btn {
+	min-height: 40px;
+	border-radius: 3px; 
+}
+.modal-confirm .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: #fff;
+	text-shadow: none;
+	opacity: 0.5;
+}
+.modal-confirm .close:hover {
+	opacity: 0.8;
+}
+.modal-confirm .icon-box {
+	color: #fff;		
+	width: 95px;
+	height: 95px;
+	display: inline-block;
+	border-radius: 50%;
+	z-index: 9;
+	border: 5px solid #fff;
+	padding: 15px;
+	text-align: center;
+}
+.modal-confirm .icon-box i {
+	font-size: 64px;
+	margin: -4px 0 0 -4px;
+}
+.modal-confirm.modal-dialog {
+	margin-top: 80px;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	background: #eeb711 !important;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	border-radius: 30px;
+	margin-top: 10px;
+	padding: 6px 20px;
+	border: none;
+}
+.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+	background: #eda645 !important;
+	outline: none;
+}
+.modal-confirm .btn span {
+	margin: 1px 3px 0;
+	float: left;
+}
+.modal-confirm .btn i {
+	margin-left: 1px;
+	font-size: 20px;
+	float: right;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
 </style>
-    <?php
+
+<?php
     // (A) PROCESS RESERVATION
     if (isset($_POST["date"])) {
       require "reserve.php";
       if ($_RSV->save(
         $_POST["date"], $_POST["slot"], $_POST["name"],
         $_POST["email"], $_POST["tel"], $_POST["notes"])) {
-        echo "<div class='ok'>Reservation saved.</div>";
+			echo "<div class='alert alert-dismissible alert-info'>";
+                echo "<button type='button' class='btn-close' data-dismiss='alert'></button>";
+                echo "<h4 class='alert-heading'>Booking Success!</h4>";
+                echo "<p class='mb-0'>Please check your email for more details!</p>";
+				echo "</div>";
       } else { echo "<div class='err'>".$_RSV->error."</div>"; }
     }
     ?>
-
-    <!-- (B) RESERVATION FORM -->
+    <!--  RESERVATION FORM -->
+	<h2 ><a href="index.php">Back</a></h2>
     <div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
-							<h1>Make your reservation</h1>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
-								ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
-								Perspiciatis.
-							</p>
+							<h1>Make your reservation with SOCIALBOOK.</h1>
+							<br>
+							<i class="bi bi-envelope-fill"  style="font-size: 38px"> </i>
+							<h2> Contact </h2>
+							<h5> info@socialbook.com </h5>
+							<br>
+							<i class="bi bi-clock-fill"  style="font-size: 38px"> </i>
+							<h2> Open Hours </h2>
+							<h5> Therapists are available from:
+							<h5> Monday - Saturday: 8am - 6pm
+							<h5> Sunday: 11am - 4pm
+</h5>
 						</div>
 					</div>
 					<div class="col-md-4 col-md-pull-7">
 						<div class="booking-form">
-                            <form id="resForm" method="post" target="_self">
+                            <form id="resForm" method="post" target="_parent" action="">
                                 <div class="form-group">
 									<span for="res_email" class="form-label">Email</span>
 									<input class="form-control" type="text" placeholder="Enter your email account" required name="email"/>
@@ -239,7 +349,8 @@
 									<input class="form-control" type="text" placeholder="Tell us your story" name="notes"/>
                                     <br>
 								<div class="form-btn">
-									<button type="submit" class="submit-btn">Submit</button>
+								<button type="submit" class="submit-btn" >Submit</button>
+								
 								</div>
 							</form>
                         </div>
@@ -248,5 +359,7 @@
 			</div>
 		</div>
 	</div>
+
+
   </body>
 </html>

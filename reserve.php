@@ -25,10 +25,7 @@ class Reservation {
   // (C) SAVE RESERVATION
   function save ($date, $slot, $name, $email, $tel, $notes="") {
     // (C1) CHECKS & RESTRICTIONS
-    // @TODO - ADD YOUR OWN RULES & REGULATIONS HERE
-    // MAX # OF RESERVATIONS ALLOWED?
-    // USER CAN ONLY BOOK X DAYS IN ADVANCE?
-    // USER CAN ONLY BOOK A MAX OF X SLOTS WITHIN Y DAYS?
+    
 
     // (C2) DATABASE ENTRY
     try {

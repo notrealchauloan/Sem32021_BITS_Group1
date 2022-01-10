@@ -389,10 +389,5 @@ If you feel that you may benefit from counselling but are concerned about costs,
         </a>
 	</div>
 	</section>
-	<!--footer--------->
-	<footer>
-	<p>Going To Internet, Ltd Consumer Website</p>
-	<p>Copyright 2020 - GoingToInternet</p>
-	</footer>
 
 
